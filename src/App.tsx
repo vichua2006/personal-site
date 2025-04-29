@@ -13,7 +13,7 @@ const App = () => {
         <Sidebar />
 
         {/* Main Content Area */}
-        <div className="flex-1 ms-10 md:ml-[30%]">
+        <div className="flex-1 ms-10 md:mx-[30%]">
           <Routes>
             <Route path="/" element={<Home />} />
             {/* <Route path="/about" element={<About />} /> */}
