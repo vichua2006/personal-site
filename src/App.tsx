@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-// import Sidebar from './components/Sidebar';
+import Sidebar from './components/Sidebar';
 // import Header from './components/Header';
 // import Home from './pages/Home';
 // import About from './pages/About';
@@ -10,11 +10,8 @@ const App = () => {
   return (
     <Router>
       <div style={{ display: 'flex', minHeight: '100vh' }}>
-      <h1 className="text-3xl font-bold underline">
-        Hello world!
-      </h1>
         {/* Sidebar */}
-        {/* <Sidebar /> */}
+        <Sidebar />
 
         {/* Main Content Area */}
         {/* <div style={{ flex: 1, padding: '20px' }}>
