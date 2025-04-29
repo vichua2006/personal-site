@@ -1,7 +1,6 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Sidebar from './components/Sidebar';
-// import Header from './components/Header';
-// import Home from './pages/Home';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Sidebar from "./components/Sidebar";
+import Home from "./pages/Home";
 // import About from './pages/About';
 // import Photos from './pages/Photos';
 // import Writing from './pages/Writing';
@@ -9,23 +8,22 @@ import Sidebar from './components/Sidebar';
 const App = () => {
   return (
     <Router>
-      <div style={{ display: 'flex', minHeight: '100vh' }}>
+      <div style={{ display: "flex", minHeight: "100vh" }}>
         {/* Sidebar */}
         <Sidebar />
 
         {/* Main Content Area */}
-        {/* <div style={{ flex: 1, padding: '20px' }}>
-          <Header />
+        <div className="flex-1 ms-10 md:ml-[30%]">
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/photos" element={<Photos />} />
-            <Route path="/writing" element={<Writing />} />
+            {/* <Route path="/about" element={<About />} /> */}
+            {/* <Route path="/photos" element={<Photos />} /> */}
+            {/* <Route path="/writing" element={<Writing />} /> */}
           </Routes>
-        </div> */}
+        </div>
       </div>
     </Router>
   );
-}
+};
 
-export default App
+export default App;
