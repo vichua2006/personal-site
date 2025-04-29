@@ -1,14 +1,34 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+// import Sidebar from './components/Sidebar';
+// import Header from './components/Header';
+// import Home from './pages/Home';
+// import About from './pages/About';
+// import Photos from './pages/Photos';
+// import Writing from './pages/Writing';
 
-function App() {
-  const [count, setCount] = useState(0)
-
+const App = () => {
   return (
-    <></>
-  )
+    <Router>
+      <div style={{ display: 'flex', minHeight: '100vh' }}>
+      <h1 className="text-3xl font-bold underline">
+        Hello world!
+      </h1>
+        {/* Sidebar */}
+        {/* <Sidebar /> */}
+
+        {/* Main Content Area */}
+        {/* <div style={{ flex: 1, padding: '20px' }}>
+          <Header />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/photos" element={<Photos />} />
+            <Route path="/writing" element={<Writing />} />
+          </Routes>
+        </div> */}
+      </div>
+    </Router>
+  );
 }
 
 export default App
