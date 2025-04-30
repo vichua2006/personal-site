@@ -1,4 +1,10 @@
 import { Link } from "react-router-dom";
+import {
+  FaGithub,
+  FaLinkedin,
+  FaEnvelope,
+  FaFileAlt,
+} from "react-icons/fa";
 
 const links = {
   Home: "/",
@@ -8,10 +14,13 @@ const links = {
 };
 
 const externals = {
-  Github: "https://github.com/vichua2006/",
-  LinkedIn: "https://linkedin.com/in/victor-qibin-huang",
-  Email: "/", //TODO:
-  Resume: "/", // TODO:
+  Github: { url: "https://github.com/vichua2006/", icon: <FaGithub /> },
+  LinkedIn: {
+    url: "https://linkedin.com/in/victor-qibin-huang",
+    icon: <FaLinkedin />,
+  },
+  Email: { url: "/", icon: <FaEnvelope /> }, // TODO: Update email link
+  Resume: { url: "/", icon: <FaFileAlt /> }, // TODO: Update resume link
 };
 
 function Sidebar() {
@@ -33,13 +42,14 @@ function Sidebar() {
         <hr className="border-gray-700 my-4" />
 
         {/* Iterate over external links */}
-        {Object.entries(externals).map(([text, url]) => (
-          <li key={text}>
+        {Object.entries(externals).map(([text, { url, icon }]) => (
+          <li key={text} className="flex items-center ">
             <a
               href={url}
-              className="block text-gray-300 text-sm hover:text-white"
+              className="flex items-center space-x-2 text-gray-300 text-sm hover:text-white"
             >
-              {text}
+              {icon}
+              <span>{text}</span>
             </a>
           </li>
         ))}
