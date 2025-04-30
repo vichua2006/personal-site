@@ -1,16 +1,22 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Sidebar from "./components/Sidebar";
 import Home from "./pages/Home";
+import { useState } from "react";
 // import About from './pages/About';
 // import Photos from './pages/Photos';
 // import Writing from './pages/Writing';
 
 const App = () => {
+  const [selectedPage, updateSelectedPage] = useState<string>("Home");
+
   return (
     <Router>
       <div style={{ display: "flex", minHeight: "100vh" }}>
         {/* Sidebar */}
-        <Sidebar />
+        <Sidebar
+          selectedPage={selectedPage}
+          handlePageSelection={updateSelectedPage}
+        />
 
         {/* Main Content Area */}
         <div className="flex-1 ms-10 md:mx-[30%]">

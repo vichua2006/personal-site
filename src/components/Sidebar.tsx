@@ -1,10 +1,5 @@
 import { Link } from "react-router-dom";
-import {
-  FaGithub,
-  FaLinkedin,
-  FaEnvelope,
-  FaFileAlt,
-} from "react-icons/fa";
+import { FaGithub, FaLinkedin, FaEnvelope, FaFileAlt } from "react-icons/fa";
 
 const links = {
   Home: "/",
@@ -23,7 +18,12 @@ const externals = {
   Resume: { url: "/", icon: <FaFileAlt /> }, // TODO: Update resume link
 };
 
-function Sidebar() {
+interface Prop {
+  selectedPage: string;
+  handlePageSelection: React.Dispatch<React.SetStateAction<string>>;
+}
+
+const Sidebar = ({ selectedPage, handlePageSelection }: Prop) => {
   return (
     <nav className="hidden fixed md:block w-[25%] text-gray-300 p-4 min-h-screen">
       <ul className="absolute right-0 space-y-4 mt-30 ">
@@ -32,7 +32,10 @@ function Sidebar() {
           <li key={text}>
             <Link
               to={url}
-              className="block text-gray-300 hover:text-white font-semibold"
+              className={`block text-gray-300 hover:text-white ${
+                text === selectedPage ? "font-bold" : ""
+              }`}
+              onClick={() => handlePageSelection(text)}
             >
               {text}
             </Link>
@@ -56,6 +59,6 @@ function Sidebar() {
       </ul>
     </nav>
   );
-}
+};
 
 export default Sidebar;
