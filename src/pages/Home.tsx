@@ -6,7 +6,7 @@ const Home = () => {
       <Header />
       <p className="my-4">
         A CS student @UWaterloo, who currently have no idea what he's doing in life, 
-        spending their spare time as a devoted rock climber, badminton player, amateur photographer, and a wannabe writer for this site.
+        spending spare time as a devoted rock climber, badminton player, amateur photographer, and a wannabe writer for this site.
       </p>
       <p className="my-4">
         Currently a Backend Developer for <a href="https://hackthenorth.com/" className="text-violet-400 underline underline-offset-4">Hack the North</a>,
@@ -17,6 +17,14 @@ const Home = () => {
         I'd rather be the person creating it,
         switching out the blubs, tuning the colors, 
         focusing it, and shining it on stage.
+      </p>
+
+      <p className="my-4">
+        This site is a collection of my crafts organized hapharzardly into several categories. Feel free to take a look around.
+      </p>
+
+      <p className="hidden md:block my-4">
+        P.S. <i>Try clicking on that moving light fixture, you'll see better</i>
       </p>
     </div>
   );

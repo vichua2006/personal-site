@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import lightOn from "../../public/spotlight-light-on.png";
 import lightOff from "../../public/spotlight-light-off.png";
 
@@ -13,7 +13,7 @@ const Spotlight = () => {
   const lightImageRef = useRef<HTMLImageElement>(null); // Ref for the light image
   let lightOpacity = 0;
 
-  const handleMouseMove = (e: React.MouseEvent) => {
+  const handleMouseMove = (e: MouseEvent) => {
     if (spotlightRef.current) {
       // Update the spotlight position
       spotlightRef.current.style.transform = `translate(${
@@ -27,13 +27,13 @@ const Spotlight = () => {
       const spotlightCenterX = spotlightRect.left + spotlightRect.width / 2;
       const spotlightCenterY = spotlightRect.top + spotlightRect.height / 2;
 
-      const deltaX = e.clientX - spotlightCenterX;
-      const deltaY = e.clientY - spotlightCenterY;
+      const deltaX = e.x - spotlightCenterX;
+      const deltaY = e.y - spotlightCenterY;
 
       // Compute the light's opacity (dims as it gets close to the fixture)
       const dist = deltaX * deltaX + deltaY * deltaY;
       lightOpacity =
-        (20 / 100) * Math.min(1, Math.max(0, (dist - 1e4) / (radius * radius)));
+        (20 / 100) * Math.min(1, Math.max(0, (dist - 1e3) / (radius * radius)));
 
       // prevent glitchly movements from being too close to point of rotation
       if (dist < radius * radius) return;
@@ -47,9 +47,18 @@ const Spotlight = () => {
     }
   };
 
+  // add listener to entire window; fixes nav bar bug
+  useEffect(() => {
+    // Simulate a mouse event at the center of the screen
+    window.addEventListener("mousemove", handleMouseMove);
+
+    return () => {
+      window.removeEventListener("mousemove", handleMouseMove);
+    }
+  }, [])
+
   return (
     <div
-      onMouseMove={handleMouseMove}
       className="absolute w-full h-screen overflow-hidden"
     >
       {/* Spotlight */}
@@ -62,7 +71,7 @@ const Spotlight = () => {
             width: `${diameter}px`,
             height: `${diameter}px`,
             transform: `translate(-${diameter}px, -${diameter}px)`, // Initial position
-            transition: "opacity 0.3s ease-out", // Smooth transition for opacity
+            transition: "opacity 0.2s ease-out", // Smooth transition for opacity
           }}
         ></div>
       ) : (
@@ -70,13 +79,13 @@ const Spotlight = () => {
       )}
 
       {/* Fixture */}
-      <div className="absolute top-0 right-0 relative">
+      <div className="absolute top-30 right-0 relative">
         <img
           onClick={() => updateIsLightOn(!isLightOn)}
           ref={lightImageRef} // Reference for direct DOM manipulation
           src={isLightOn ? lightOn : lightOff}
           alt="Spotlight light"
-          className="absolute top-0 left-13/16 transform -translate-x-1/2"
+          className="fixed absolute top-30 right-0 left-13/16 transform -translate-x-1/2"
           style={{
             width: "150px",
             height: "auto",
