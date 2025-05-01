@@ -1,28 +1,38 @@
-import React, { useState } from "react";
+import React, { useRef } from "react";
 
-const SpotlightEffect = () => {
-  const [position, setPosition] = useState({ x: 0, y: 0 });
+const radius = 250; // in px
+const diameter = 2 * radius;
+
+const Spotlight = () => {
+  // directly manipulate DOM element for efficiency
+  // otherwise spotlight lags too hard
+  const spotlightRef = useRef<HTMLDivElement>(null);
 
   const handleMouseMove = (e: React.MouseEvent) => {
-    setPosition({ x: e.clientX, y: e.clientY });
+    if (spotlightRef.current) {
+      // Update the spotlight position directly via CSS transform
+      spotlightRef.current.style.transform = `translate(${e.clientX - radius}px, ${e.clientY - radius}px)`;
+    }
   };
 
   return (
     <div
       onMouseMove={handleMouseMove}
-      className="relative w-full h-screen overflow-hidden"
+      className="absolute w-full h-screen overflow-hidden"
     >
       {/* Spotlight */}
       <div
-        className="pointer-events-none fixed w-64 h-64 rounded-full bg-gradient-to-r from-white/20 to-transparent"
+        ref={spotlightRef}
+        className={`pointer-events-none fixed rounded-full bg-gradient-to-r from-violet-500/20 to-violet-500/20`}
         style={{
-          top: position.y - 128, // Center the spotlight vertically
-          left: position.x - 128, // Center the spotlight horizontally
+          width: `${diameter}px`,
+          height: `${diameter}px`,
+          transform: `translate(-${diameter}px, -${diameter}px)`, // Initial position
         }}
       ></div>
-
     </div>
+
   );
 };
 
-export default SpotlightEffect;
+export default Spotlight;

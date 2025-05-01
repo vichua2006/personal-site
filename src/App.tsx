@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Sidebar from "./components/Sidebar";
+import Spotlight from "./components/Spotlight";
 import Home from "./pages/Home";
 import { useState } from "react";
 // import About from './pages/About';
@@ -17,6 +18,8 @@ const App = () => {
           selectedPage={selectedPage}
           handlePageSelection={updateSelectedPage}
         />
+
+        <Spotlight />
 
         {/* Main Content Area */}
         <div className="flex-1 ms-10 md:mx-[30%]">
