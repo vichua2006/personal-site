@@ -13,8 +13,8 @@ const Home = () => {
         dreaming big to improve the experience of both hackers and organizers. ⚙️💙
       </p>
       <p className="my-4">
-        Rather than working in the spotlight,
-        I'd prefer to be the person creating it,
+        Compared to working under the spotlight,
+        I'd rather be the person creating it,
         switching out the blubs, tuning the colors, 
         focusing it, and shining it on stage.
       </p>
