@@ -5,11 +5,18 @@ const Home = () => {
     <div className="mt-30 p-4 min-h-screen text-white">
       <Header />
       <p className="my-4">
-        A CS student @UWaterloo, who currently have no idea what he's doing in life.
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        A CS student @UWaterloo, who currently have no idea what he's doing in life, 
+        spending their spare time as a devoted rock climber, badminton player, amateur photographer, and a wannabe writer for this site.
       </p>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      <p className="my-4">
+        Currently a Backend Developer for <a href="https://hackthenorth.com/" className="text-violet-400 underline underline-offset-4">Hack the North</a>,
+        dreaming big to improve the experience of both hackers and organizers. ⚙️💙
+      </p>
+      <p className="my-4">
+        Rather than working in the spotlight,
+        I'd prefer to be the person creating it,
+        switching out the blubs, tuning the colors, 
+        focusing it, and shining it on stage.
       </p>
     </div>
   );
