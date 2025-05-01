@@ -13,13 +13,15 @@ const App = () => {
   return (
     <Router>
       <div style={{ display: "flex", minHeight: "100vh" }}>
+        <div className="hidden md:block">
+          <Spotlight />
+        </div>
         {/* Sidebar */}
         <Sidebar
           selectedPage={selectedPage}
           handlePageSelection={updateSelectedPage}
         />
 
-        <Spotlight />
 
         {/* Main Content Area */}
         <div className="flex-1 ms-10 md:mx-[30%]">
