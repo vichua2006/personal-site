@@ -16,7 +16,7 @@ const About = () => {
   return (
     <div className="text-white">
       <div className="font-bold mb-4 ">About</div>
-      <blockquote className="p-4 my-4 border-s-4 border-violet-800/40 dark:bg-violet-950/20">
+      <blockquote className="p-4 my-4 border-s-4 border-violet-800/40 bg-violet-950/20">
         <p className="italic leading-relaxed text-white">
           Rather than basking in the warm spotlight glow,
         </p>

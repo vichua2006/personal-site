@@ -30,8 +30,8 @@ const ProjectCard = ({
 
         {/* Text Content */}
         <div className="z-10">
-          <h3 className="text-md text-gray-900 dark:text-white">{title}</h3>
-          <p className="text-sm text-gray-600 dark:text-gray-400">
+          <h3 className="text-md text-white">{title}</h3>
+          <p className="text-sm text-gray-400">
             {description}
           </p>
         </div>
