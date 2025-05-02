@@ -59,7 +59,7 @@ const Spotlight = () => {
 
   return (
     <div
-      className="absolute w-full h-screen overflow-hidden"
+      className="overflow-hidden"
     >
       {/* Spotlight */}
       {isLightOn ? (

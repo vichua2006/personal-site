@@ -24,13 +24,13 @@ const Home = () => {
 
   return (
     //TODO: move this to app to standardize all pages
-    <div className="text-white">
+    <div className="text-white z-50">
       <Header />
       <p className="my-4">
         A CS student @{" "}
         <a
           href="https://uwaterloo.ca/"
-          className="text-violet-400 underline underline-offset-4"
+          className="z-50 text-violet-400 underline underline-offset-4"
         >
           UWaterloo
         </a>
@@ -40,7 +40,7 @@ const Home = () => {
         geeking out at theatre{" "}
         <a
           href="https://www.martin.com/en/products/mac-aura"
-          className="text-violet-400 underline underline-offset-4"
+          className="z-50 text-violet-400 underline underline-offset-4"
         >
           lighting fixtures.
         </a>
@@ -49,7 +49,7 @@ const Home = () => {
         Currently a Backend Developer for{" "}
         <a
           href="https://hackthenorth.com/"
-          className="text-violet-400 underline underline-offset-4"
+          className="z-50 text-violet-400 underline underline-offset-4"
         >
           Hack the North
         </a>

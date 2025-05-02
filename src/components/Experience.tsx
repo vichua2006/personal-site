@@ -19,36 +19,42 @@ const projects = [
     bgImage: htnBanner,
     title: "Hack the North",
     description: "Canada's Biggest Hackathon",
+    link: "https://hackthenorth.com/",
   },
   {
     icon: tmtLogo,
     title: "Tom Morrison Theatre",
     bgImage: tmtBanner,
     description: "Rocking Sound and Lighting!",
+    link: "https://www.facebook.com/fhstmt/"
   },
   {
     icon: wargLogo,
     title: "Waterloo Aerial Robotics Group",
     bgImage: wargBanner,
     description: "Drone Computer Vision",
+    link: "https://www.uwarg.com/"
   },
   {
     icon: deCivLogo,
     title: "UC Santa Barabra",
     bgImage: ucsbBanner,
     description: "Research On the Artificial Citizen",
+    link: "https://www.linkedin.com/company/de-civai/posts/?feedView=all",
   },
   {
     icon: unbLogo,
     title: "UNB Physics Department",
     bgImage: unbBanner,
     description: "Exploring Lasers and Weather",
+    link: "https://www.unb.ca/",
   },
   {
     icon: atlcLogo,
     title: "Atlantic Star Math Club",
     bgImage: atlcBanner,
     description: "Yappin' bout Math",
+    link: "/"
   },
 ];
 
@@ -63,6 +69,7 @@ const Experience = () => {
             bgImage={project.bgImage} 
             title={project.title}
             description={project.description}
+            link={project.link}
           />
         ))}
       </div>
