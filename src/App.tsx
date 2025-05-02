@@ -4,7 +4,7 @@ import Spotlight from "./components/Spotlight";
 import Home from "./pages/Home";
 import { useState } from "react";
 import About from './pages/About';
-// import Photos from './pages/Photos';
+import Photos from './pages/Photos';
 import Writing from './pages/Writing';
 
 const App = () => {
@@ -28,7 +28,7 @@ const App = () => {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
-            {/* <Route path="/photos" element={<Photos />} /> */}
+            <Route path="/photos" element={<Photos />} />
             <Route path="/writing" element={<Writing />} />
           </Routes>
         </div>
