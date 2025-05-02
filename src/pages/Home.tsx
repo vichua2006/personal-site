@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import Header from "../components/Header";
+import Experience from "../components/Experience";
 
 const Home = () => {
   const [spotlightPosition, setSpotlightPosition] = useState({ x: 0, y: 0 });
@@ -25,6 +26,7 @@ const Home = () => {
         A CS student @UWaterloo, who currently have no idea what he's doing in
         life, spending spare time as a devoted rock climber, badminton player,
         amateur photographer, and a wannabe writer for this site.
+        Also occasionally found to be geeking out at theatre lighting fixtures.
       </p>
       <p className="my-4">
         Currently a Backend Developer for{" "}
@@ -67,8 +69,10 @@ const Home = () => {
       <div style={{
         clipPath: `circle(150px at ${spotlightPosition.x}px ${spotlightPosition.y}px)`,
       }}>
-        <p className="italic">hmm but this really ain't that bad ;)</p>
+        {/* <p className="italic">hmm but this really ain't that bad ;)</p> */}
       </div>
+
+      <Experience />
     </div>
   );
 };
