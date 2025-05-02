@@ -3,6 +3,7 @@ import Header from "../components/Header";
 import Experience from "../components/Experience";
 
 const Home = () => {
+  // TODO: refactor to properly display hidden text
   const [spotlightPosition, setSpotlightPosition] = useState({ x: 0, y: 0 });
 
   const handleMouseMove = (e: MouseEvent) => {
@@ -13,6 +14,9 @@ const Home = () => {
     // Attach mousemove listener to track spotlight position
     window.addEventListener("mousemove", handleMouseMove);
 
+    // reset to top of page
+    window.scrollTo(0, 0);
+
     return () => {
       window.removeEventListener("mousemove", handleMouseMove);
     };
@@ -20,13 +24,26 @@ const Home = () => {
 
   return (
     //TODO: move this to app to standardize all pages
-    <div className="mt-30 p-4 min-h-screen text-white">
+    <div className="text-white">
       <Header />
       <p className="my-4">
-        A CS student @UWaterloo, who currently have no idea what he's doing in
-        life, spending spare time as a devoted rock climber, badminton player,
-        amateur photographer, and a wannabe writer for this site.
-        Also occasionally found to be geeking out at theatre lighting fixtures.
+        A CS student @{" "}
+        <a
+          href="https://uwaterloo.ca/"
+          className="text-violet-400 underline underline-offset-4"
+        >
+          UWaterloo
+        </a>
+        , who currently have no idea what he's doing in life, spending spare
+        time as a devoted rock climber, badminton player, amateur photographer,
+        and a wannabe writer for this site. Also occasionally found to be
+        geeking out at theatre{" "}
+        <a
+          href="https://www.martin.com/en/products/mac-aura"
+          className="text-violet-400 underline underline-offset-4"
+        >
+          lighting fixtures.
+        </a>
       </p>
       <p className="my-4">
         Currently a Backend Developer for{" "}
@@ -36,8 +53,8 @@ const Home = () => {
         >
           Hack the North
         </a>
-        , building to help craft an event where both hackers and organizers can dream big.
-        ⚙️💙
+        , building to help craft an event where both hackers and organizers can
+        dream big. ⚙️💙
       </p>
 
       <p className="my-4">
@@ -50,7 +67,10 @@ const Home = () => {
       <p className="hidden md:block my-4">
         P.S. <i>try turning the light on</i>
       </p>
-      <p className="text-sm italic">(will eventually have things that only show when lit! still in progress 🔧💪)</p>
+      <p className="text-sm italic">
+        (will eventually have things that only show when lit! still in progress
+        🔧💪)
+      </p>
 
       <hr className="border-gray-700 my-8" />
 
@@ -58,17 +78,11 @@ const Home = () => {
         <div className="font-bold">Experience</div>
       </header>
 
-      <blockquote className="p-4 my-4 border-s-4 border-violet-800/40 dark:bg-violet-950/20">
-        <p className="italic leading-relaxed text-white">
-          Rather than basking in the warm spotlight glow,
-        </p>
-        <p className="italic leading-relaxed text-white">
-          I choose to be the quiet hand that lights the stage ablaze.
-        </p>
-      </blockquote>
-      <div style={{
-        clipPath: `circle(150px at ${spotlightPosition.x}px ${spotlightPosition.y}px)`,
-      }}>
+      <div
+        style={{
+          clipPath: `circle(150px at ${spotlightPosition.x}px ${spotlightPosition.y}px)`,
+        }}
+      >
         {/* <p className="italic">hmm but this really ain't that bad ;)</p> */}
       </div>
 

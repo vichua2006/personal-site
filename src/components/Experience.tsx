@@ -54,7 +54,7 @@ const projects = [
 
 const Experience = () => {
   return (
-    <div className="mt-8">
+    <div className="mt-4">
       <div className="space-y-4">
         {projects.map((project, index) => (
           <ProjectCard

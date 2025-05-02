@@ -3,7 +3,7 @@ import Sidebar from "./components/Sidebar";
 import Spotlight from "./components/Spotlight";
 import Home from "./pages/Home";
 import { useState } from "react";
-// import About from './pages/About';
+import About from './pages/About';
 // import Photos from './pages/Photos';
 // import Writing from './pages/Writing';
 
@@ -24,10 +24,10 @@ const App = () => {
 
 
         {/* Main Content Area */}
-        <div className="flex-1 ms-10 md:mx-[30%]">
+        <div className="flex-1 ms-10 md:mx-[30%] mt-30 p-4 min-h-screen ">
           <Routes>
             <Route path="/" element={<Home />} />
-            {/* <Route path="/about" element={<About />} /> */}
+            <Route path="/about" element={<About />} />
             {/* <Route path="/photos" element={<Photos />} /> */}
             {/* <Route path="/writing" element={<Writing />} /> */}
           </Routes>
