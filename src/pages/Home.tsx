@@ -1,13 +1,14 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import Header from "../components/Header";
 import Experience from "../components/Experience";
 
 const Home = () => {
   // TODO: refactor to properly display hidden text
-  const [spotlightPosition, setSpotlightPosition] = useState({ x: 0, y: 0 });
+  // const [spotlightPosition, setSpotlightPosition] = useState({ x: 0, y: 0 });
 
   const handleMouseMove = (e: MouseEvent) => {
     // setSpotlightPosition({ x: e.clientX, y: e.clientY });
+    e;
   };
 
   useEffect(() => {
