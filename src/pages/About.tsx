@@ -3,7 +3,7 @@ import { useEffect } from "react";
 const About = () => {
   useEffect(() => {
     // Disable scrolling
-    // document.body.style.overflow = "hidden";
+    document.body.style.overflow = "hidden";
 
     // reset to top of page
     window.scrollTo(0, 0);

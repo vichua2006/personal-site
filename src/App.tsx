@@ -5,7 +5,7 @@ import Home from "./pages/Home";
 import { useState } from "react";
 import About from './pages/About';
 // import Photos from './pages/Photos';
-// import Writing from './pages/Writing';
+import Writing from './pages/Writing';
 
 const App = () => {
   const [selectedPage, updateSelectedPage] = useState<string>("Home");
@@ -29,7 +29,7 @@ const App = () => {
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
             {/* <Route path="/photos" element={<Photos />} /> */}
-            {/* <Route path="/writing" element={<Writing />} /> */}
+            <Route path="/writing" element={<Writing />} />
           </Routes>
         </div>
       </div>

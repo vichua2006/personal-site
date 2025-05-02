@@ -15,7 +15,7 @@ const Home = () => {
     window.addEventListener("mousemove", handleMouseMove);
 
     // reset to top of page
-    window.scrollTo(0, 0);
+    // window.scrollTo(0, 0);
 
     return () => {
       window.removeEventListener("mousemove", handleMouseMove);
