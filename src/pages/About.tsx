@@ -21,7 +21,7 @@ const About = () => {
           Rather than basking in the warm spotlight glow,
         </p>
         <p className="italic leading-relaxed text-white">
-          I choose to be the quiet hand that lights the stage ablaze.
+          I'd choose to be the quiet hand that lights the stage ablaze.
         </p>
       </blockquote>
 
