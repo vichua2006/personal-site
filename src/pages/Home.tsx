@@ -77,14 +77,14 @@ const Home = () => {
       <header>
         <div className="font-bold">Experience</div>
       </header>
-
+{/* 
       <div
         style={{
           clipPath: `circle(150px at ${spotlightPosition.x}px ${spotlightPosition.y}px)`,
         }}
       >
-        {/* <p className="italic">hmm but this really ain't that bad ;)</p> */}
-      </div>
+        <p className="italic">hmm but this really ain't that bad ;)</p>
+      </div> */}
 
       <Experience />
     </div>

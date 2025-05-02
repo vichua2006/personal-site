@@ -5,7 +5,7 @@ const links = {
   Home: "/",
   About: "/about",
   Writing: "/writing",
-  Photographs: "/photos",
+  Photos: "/photos",
 };
 
 const externals = {
