@@ -14,8 +14,8 @@ const externals = {
     url: "https://linkedin.com/in/victor-qibin-huang",
     icon: <FaLinkedin />,
   },
-  Email: { url: "/", icon: <FaEnvelope /> }, // TODO: Update email link
-  Resume: { url: "/", icon: <FaFileAlt /> }, // TODO: Update resume link
+  Email: { url: "mailto:victor.huang1@uwaterloo.ca", icon: <FaEnvelope /> },
+  Resume: { url: "https://github.com/vichua2006/resume/blob/main/Sep%202024%20Resume.pdf", icon: <FaFileAlt /> },
 };
 
 interface Prop {
