@@ -20,7 +20,7 @@ const ProjectCard = ({
       to={link} 
       className="z-50"
     >
-      <div className="relative flex items-center py-4 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 overflow-hidden group">
+      <div className="relative flex items-center p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 overflow-hidden group">
         {/* Icon */}
         <img
           src={icon}
