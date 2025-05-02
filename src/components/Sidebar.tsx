@@ -4,8 +4,8 @@ import { FaGithub, FaLinkedin, FaEnvelope, FaFileAlt } from "react-icons/fa";
 const links = {
   Home: "/",
   About: "/about",
-  Photographs: "/photos",
   Writing: "/writing",
+  Photographs: "/photos",
 };
 
 const externals = {

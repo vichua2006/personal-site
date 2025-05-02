@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import lightOn from "../../public/spotlight-light-on.png";
 import lightOff from "../../public/spotlight-light-off.png";
 
@@ -36,7 +36,7 @@ const Spotlight = () => {
         (20 / 100) * Math.min(1, Math.max(0, (dist - 1e3) / (radius * radius)));
 
       // prevent glitchly movements from being too close to point of rotation
-      if (dist < radius * radius) return;
+      if (dist < (radius * radius / 16)) return;
 
       // Calculate the angle between the cursor and the spotlight center
       const angle = Math.atan2(deltaY, deltaX) * (180 / Math.PI); // Convert radians to degrees
