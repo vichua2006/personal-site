@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { PostMetadata } from "../types/postMetadata";
+import { PostMetadata } from "../types/PostMetadata";
 
 const PostPreviewCard = ({ title, date, description, slug }: PostMetadata) => {
   return (

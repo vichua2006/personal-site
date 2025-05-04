@@ -1,5 +1,5 @@
 import postSlugs from "../data/postSlugs";
-import { PostMetadata } from "../types/postMetadata";
+import { PostMetadata } from "../types/PostMetadata";
 import matter from "gray-matter";
 
 const fetchMarkdown = async (slug: string) => {

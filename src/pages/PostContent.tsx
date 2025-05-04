@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import ReactMarkdown from "react-markdown";
 import { getPostContent, getPostMetaData } from "../utils/getPostData";
 import { Link } from "react-router-dom";
-import { PostMetadata } from "../types/postMetadata";
+import { PostMetadata } from "../types/PostMetadata";
 import postSlugs from "../data/postSlugs";
 
 const PostContent = () => {
