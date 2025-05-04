@@ -24,7 +24,6 @@ const Home = () => {
   }, []);
 
   return (
-    //TODO: move this to app to standardize all pages
     <div className="text-white z-50">
       <Header />
       <p className="my-4">
