@@ -1,7 +1,7 @@
 ---
 title: "flying back from fredericton"
 description: "it sucked"
-date: "05-03-25"
+date: "25-05-03"
 slug: "test-2"
 ---
 
