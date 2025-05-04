@@ -12,7 +12,7 @@ const fetchMarkdown = async (slug: string) => {
   return text;
 };
 
-export const getPostMetadata = async () => {
+export const getAllPostMetadata = async () => {
   const posts = await Promise.all(
     postSlugs.map(async (slug: string) => {
       const response = await fetch(`/posts/${slug}.md`);
@@ -40,3 +40,18 @@ export const getPostContent = async (slug: string) => {
   const matterResult = matter(fileContent);
   return matterResult.content;
 };
+
+export const getPostMetaData = async (slug: string) => {
+
+  const fileContent = await fetchMarkdown(slug);
+  if (!fileContent) return null;
+  const matterResult = matter(fileContent);
+  const metadata: PostMetadata = {
+    title: matterResult.data.title,
+    date: matterResult.data.date,
+    description: matterResult.data.description,
+    slug: slug,
+  };
+
+  return metadata;
+}

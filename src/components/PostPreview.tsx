@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getPostMetadata } from "../utils/getPostData";
+import { getAllPostMetadata } from "../utils/getPostData";
 import { PostMetadata } from "../types/postMetadata";
 import PostPreviewCard from "./PostPreviewCards";
 
@@ -7,7 +7,7 @@ const PostPreview = () => {
   const [metadata, setMetadata] = useState<PostMetadata[]>([]);
 
   useEffect(() => {
-    getPostMetadata().then((data) => setMetadata(data));
+    getAllPostMetadata().then((data) => setMetadata(data));
   }, []);
 
   return (
