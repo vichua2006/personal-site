@@ -6,6 +6,7 @@ import { useState } from "react";
 import About from './pages/About';
 import Photos from './pages/Photos';
 import Writing from './pages/Writing';
+import PostContent from "./pages/PostContent";
 
 const App = () => {
   const [selectedPage, updateSelectedPage] = useState<string>("Home");
@@ -30,6 +31,7 @@ const App = () => {
             <Route path="/about" element={<About />} />
             <Route path="/photos" element={<Photos />} />
             <Route path="/writing" element={<Writing />} />
+            <Route path="/writing/:slug" element={<PostContent />} />
           </Routes>
         </div>
       </div>

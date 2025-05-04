@@ -1,34 +1,57 @@
+import postSlugs from "../data/postSlugs";
 import { PostMetadata } from "../types/postMetadata";
 import matter from "gray-matter";
 
-// const getPostContent = (slug: string) => {
-//     const folder = "posts/";
-//     const file = `${folder}${slug}.md`;
-//     const content = fs.readFileSync(file, "utf8");
-//     const matterResult = matter(content);
-//     return matterResult;
-// };
+const fetchMarkdown = async (slug: string) => {
+  const response = await fetch(`/posts/${slug}.md`);
+  if (!response.ok) {
+    // throw new Error("Failed to fetch the Markdown file");
+    return null; // gets passed up to components for error checking
+  }
+  const text = await response.text();
+  return text;
+};
 
+export const getAllPostMetadata = async () => {
+  const posts = await Promise.all(
+    postSlugs.map(async (slug: string) => {
+      const response = await fetch(`/posts/${slug}.md`);
+      if (!response.ok) {
+        throw new Error(`Failed to fetch ${slug}.md`);
+      }
+      const fileContent = await response.text();
+      const matterResult = matter(fileContent);
+      const metadata: PostMetadata = {
+        title: matterResult.data.title,
+        date: matterResult.data.date,
+        description: matterResult.data.description,
+        slug: slug,
+      };
 
+      return metadata;
+    })
+  );
+  return posts;
+};
 
-// const getPostMetaData = (): PostMetadata[] => {
-//     const folder = "posts/";
-//     const files = fs.readdirSync(folder);
-//     const markdownPosts = files.filter((file) => file.endsWith(".md"));
-    
-//     const posts = markdownPosts.map((fileName) => {
-//         const folder = "posts/";
-//         const fileContents = fs.readFileSync(`${folder}${fileName}`, "utf-8");
-//         const matterResult = matter(fileContents);
-//         return {
-//             title: matterResult.data.title,
-//             date: matterResult.data.date,
-//             description: matterResult.data.description,
-//             slug: fileName.replace(".md", ""),
-//         }
-//     }).sort((post1, post2) => {
-//         return (post1.date > post2.date ? -1 : 1);
-//     });
+export const getPostContent = async (slug: string) => {
+  const fileContent = await fetchMarkdown(slug);
+  if (!fileContent) return null;
+  const matterResult = matter(fileContent);
+  return matterResult.content;
+};
 
-//     return posts;
-// };
+export const getPostMetaData = async (slug: string) => {
+
+  const fileContent = await fetchMarkdown(slug);
+  if (!fileContent) return null;
+  const matterResult = matter(fileContent);
+  const metadata: PostMetadata = {
+    title: matterResult.data.title,
+    date: matterResult.data.date,
+    description: matterResult.data.description,
+    slug: slug,
+  };
+
+  return metadata;
+}

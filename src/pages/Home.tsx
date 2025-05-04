@@ -11,6 +11,7 @@ const Home = () => {
     e;
   };
 
+
   useEffect(() => {
     // Attach mousemove listener to track spotlight position
     window.addEventListener("mousemove", handleMouseMove);
