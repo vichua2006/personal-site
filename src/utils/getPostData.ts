@@ -30,12 +30,11 @@ export const getPostMetadata = async () => {
       return metadata;
     })
   );
-
   return posts;
 }
 
 export const getPostContent = async (slug: string) => {
     const fileContent = await fetchMarkdown(slug);
     const matterResult = matter(fileContent);
-    return matterResult;
+    return matterResult.content;
 }

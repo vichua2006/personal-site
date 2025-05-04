@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import Header from "../components/Header";
 import Experience from "../components/Experience";
+import { getPostContent } from "../utils/getPostData";
 
 const Home = () => {
   // TODO: refactor to properly display hidden text
@@ -11,12 +12,15 @@ const Home = () => {
     e;
   };
 
+
   useEffect(() => {
     // Attach mousemove listener to track spotlight position
     window.addEventListener("mousemove", handleMouseMove);
 
     // reset to top of page
     // window.scrollTo(0, 0);
+
+    getPostContent("test-1");
 
     return () => {
       window.removeEventListener("mousemove", handleMouseMove);
