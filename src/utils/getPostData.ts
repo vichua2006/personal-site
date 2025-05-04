@@ -1,6 +1,6 @@
 import postSlugs from "../data/postSlugs";
 import { PostMetadata } from "../types/PostMetadata";
-import matter from "gray-matter";
+import frontMatter from "front-matter";
 
 const fetchMarkdown = async (slug: string) => {
   const response = await fetch(`/posts/${slug}.md`);
@@ -9,26 +9,17 @@ const fetchMarkdown = async (slug: string) => {
     return null; // gets passed up to components for error checking
   }
   const text = await response.text();
-  return text;
+  const { attributes, body } = frontMatter(text);
+  return {
+    metadata: attributes, // Front matter metadata
+    content: body, // Markdown content
+  };
 };
 
 export const getAllPostMetadata = async () => {
   const posts = await Promise.all(
     postSlugs.map(async (slug: string) => {
-      const response = await fetch(`/posts/${slug}.md`);
-      if (!response.ok) {
-        throw new Error(`Failed to fetch ${slug}.md`);
-      }
-      const fileContent = await response.text();
-      const matterResult = matter(fileContent);
-      const metadata: PostMetadata = {
-        title: matterResult.data.title,
-        date: matterResult.data.date,
-        description: matterResult.data.description,
-        slug: slug,
-      };
-
-      return metadata;
+      return getPostMetaData(slug);
     })
   );
   return posts;
@@ -37,21 +28,11 @@ export const getAllPostMetadata = async () => {
 export const getPostContent = async (slug: string) => {
   const fileContent = await fetchMarkdown(slug);
   if (!fileContent) return null;
-  const matterResult = matter(fileContent);
-  return matterResult.content;
+  return fileContent.content;
 };
 
 export const getPostMetaData = async (slug: string) => {
-
   const fileContent = await fetchMarkdown(slug);
   if (!fileContent) return null;
-  const matterResult = matter(fileContent);
-  const metadata: PostMetadata = {
-    title: matterResult.data.title,
-    date: matterResult.data.date,
-    description: matterResult.data.description,
-    slug: slug,
-  };
-
-  return metadata;
-}
+  return fileContent.metadata;
+};
