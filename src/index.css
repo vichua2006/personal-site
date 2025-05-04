@@ -1,1 +1,98 @@
+
 @import "tailwindcss";
+
+/* Markdown Container */
+.markdown-container {
+  color: #e5e7eb; /* Light gray text (similar to Tailwind's text-gray-300) */
+  line-height: 1.8; /* Improve readability */
+}
+
+/* Headings */
+.markdown-container h1,
+.markdown-container h2,
+.markdown-container h3 {
+  font-weight: bold;
+  color: #ffffff; /* White text for headings */
+  margin-bottom: 0.5rem;
+}
+
+.markdown-container h1 {
+  font-size: 1.875rem; /* Tailwind's text-2xl */
+}
+
+.markdown-container h2 {
+  font-size: 1.5rem; /* Tailwind's text-xl */
+}
+
+.markdown-container h3 {
+  font-size: 1.25rem; /* Tailwind's text-lg */
+}
+
+/* Paragraphs */
+.markdown-container p {
+  margin-bottom: 1rem;
+  color: #e5e7eb; /* Light gray text */
+}
+
+/* Links */
+.markdown-container a {
+  color: #8b5cf6; /* Violet color (similar to Tailwind's text-violet-400) */
+  text-decoration: underline;
+  text-underline-offset: 4px; /* Add space between text and underline */
+}
+
+.markdown-container a:hover {
+  color: #a78bfa; /* Lighter violet on hover (similar to Tailwind's hover:text-violet-300) */
+}
+
+/* Lists */
+.markdown-container ul {
+  list-style-type: disc;
+  margin-left: 1.5rem; /* Indent list items */
+  margin-bottom: 1rem;
+}
+
+.markdown-container ol {
+  list-style-type: decimal;
+  margin-left: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.markdown-container li {
+  margin-bottom: 0.5rem;
+}
+
+/* Blockquotes */
+.markdown-container blockquote {
+  border-left: 4px solid #8b5cf6; /* Violet border */
+  padding-left: 1rem;
+  color: #d1d5db; /* Lighter gray text */
+  font-style: italic;
+  background-color: rgba(139, 92, 246, 0.1); /* Light violet background */
+  margin-bottom: 1rem;
+}
+
+/* Code Blocks */
+.markdown-container pre {
+  background-color: #1f2937; /* Dark gray background (similar to Tailwind's bg-gray-800) */
+  color: #d1d5db; /* Light gray text */
+  padding: 1rem;
+  border-radius: 0.5rem; /* Rounded corners */
+  overflow-x: auto; /* Horizontal scrolling for long code */
+  margin-bottom: 1rem;
+}
+
+.markdown-container code {
+  background-color: #374151; /* Slightly lighter gray for inline code */
+  color: #f9fafb; /* White text */
+  padding: 0.2rem 0.4rem;
+  border-radius: 0.25rem; /* Rounded corners */
+  font-family: "Courier New", Courier, monospace; /* Monospace font */
+}
+
+/* Horizontal Rule */
+.markdown-container hr {
+  border: none;
+  border-top: 1px solid #374151; /* Dark gray line */
+  margin: 1.5rem 0;
+}
