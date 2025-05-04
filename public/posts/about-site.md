@@ -6,7 +6,7 @@ slug: "about-site"
 ---
 
 > This dude finally got a personal website
->		- [cll](https://www.chinglamlau.ca/writing/cs-club-website), probably  
+>		- [cll](https://www.chinglamlau.ca), probably  
 
 Welcome! Hopefully you've had a good time so far.
 With few days remaining until the new summer semester (2A), I decided it was time to finally give myself some digial presence (and as a way to procrastinate on revamping my resume), and so here you go! Brand new personal website for the world. 
@@ -18,7 +18,7 @@ This site is build with React + [Tailwind CSS](https://tailwindcss.com/) (10/10,
 
 The first point refers to the spotlight effect. Secondly, *all* the markdown files thus have to be public assets and sent over upon any request, which isn't that big of a problem unless I write a bjillion writing entries (or unless somehow this site becomes popular), but also just makes me feel like a crappy dev. Probably should have done a bit more research before I started 😋.
 
-Inspiration credit goes to [Billy Tseng](https://www.billytseng.com/), [Wilbur Zhang](https://www.wilburzhang.com/), [Ching Lam Lau](https://www.chinglamlau.ca/), and [Ivan Yu](https://ivan-yu.ca/). Believe it or not, I actually thought of the spotlight idea seperate from [Hack the North 2025 teaser](https://hackthenorth.com/), but it's too similar for me to claim otherwise. The color theme doesn't help either.
+Design inspiration goes to [Billy Tseng](https://www.billytseng.com/), [Wilbur Zhang](https://www.wilburzhang.com/), [Ching Lam Lau](https://www.chinglamlau.ca/), and [Ivan Yu](https://ivan-yu.ca/). Believe it or not, I actually thought of the spotlight idea seperate from [Hack the North 2025 teaser](https://hackthenorth.com/), but it's too similar for me to claim otherwise. The color theme doesn't help either.
 
 Now, the question to be answered: when am I going to fix these issues?
 
