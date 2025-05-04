@@ -1,34 +1,41 @@
+import postSlugs from "../data/postSlugs";
 import { PostMetadata } from "../types/postMetadata";
-import matter from "gray-matter";
+import matter from "gray-matter"
 
-// const getPostContent = (slug: string) => {
-//     const folder = "posts/";
-//     const file = `${folder}${slug}.md`;
-//     const content = fs.readFileSync(file, "utf8");
-//     const matterResult = matter(content);
-//     return matterResult;
-// };
+const fetchMarkdown = async (slug: string) => {
+  const response = await fetch(`/posts/${slug}.md`);
+  if (!response.ok) {
+    throw new Error("Failed to fetch the Markdown file");
+  }
+  const text = await response.text();
+  return text;
+};
 
+export const getPostMetadata = async () => {
+  const posts = await Promise.all(
+    postSlugs.map(async (slug: string) => {
+      const response = await fetch(`/posts/${slug}.md`);
+      if (!response.ok) {
+        throw new Error(`Failed to fetch ${slug}.md`);
+      }
+      const fileContent = await response.text();
+      const matterResult = matter(fileContent);
+      const metadata: PostMetadata = {
+        title: matterResult.data.title,
+        date: matterResult.data.date,
+        description: matterResult.data.description,
+        slug: slug,
+      }
 
+      return metadata;
+    })
+  );
 
-// const getPostMetaData = (): PostMetadata[] => {
-//     const folder = "posts/";
-//     const files = fs.readdirSync(folder);
-//     const markdownPosts = files.filter((file) => file.endsWith(".md"));
-    
-//     const posts = markdownPosts.map((fileName) => {
-//         const folder = "posts/";
-//         const fileContents = fs.readFileSync(`${folder}${fileName}`, "utf-8");
-//         const matterResult = matter(fileContents);
-//         return {
-//             title: matterResult.data.title,
-//             date: matterResult.data.date,
-//             description: matterResult.data.description,
-//             slug: fileName.replace(".md", ""),
-//         }
-//     }).sort((post1, post2) => {
-//         return (post1.date > post2.date ? -1 : 1);
-//     });
+  return posts;
+}
 
-//     return posts;
-// };
+export const getPostContent = async (slug: string) => {
+    const fileContent = await fetchMarkdown(slug);
+    const matterResult = matter(fileContent);
+    return matterResult;
+}
