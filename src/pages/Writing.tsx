@@ -19,11 +19,11 @@ const Writing = () => {
       <div className="font-bold mb-4 ">Writing</div>
       <p className="my-4">
         A collection of interesting pieces of writing from my Obsidian Vault.
-        Some are technical docs, some are little stories, and some are poem-ish fragments of thought.
+        Some are blog entries, some are technical docs, some are little stories, and some are poem-ish fragments of thought.
       </p>
 
-      <p className="my-8">
-        Wish you some entertaining discoveries, enjoy!
+      <p className="my-8 italic">
+        Wish you some entertaining discoveries, enjoy.
       </p>
 
 

@@ -9,7 +9,7 @@ const PostPreviewCard = ({ title, date, description, slug }: PostMetadata) => {
         <Link
           to={`/writing/${slug}`}
         >
-            <h3 className="text-md text-white font-medium">{title}</h3>
+            <h3 className="text-md text-white font-medium hover:underline underline-offset-4">{title}</h3>
         </Link>
       </div>
 

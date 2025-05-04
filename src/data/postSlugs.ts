@@ -1,7 +1,6 @@
 
 const postSlugs = [
-    "test-1",
-    "test-2"
+    "about-site",
 ]
 
 export default postSlugs;
