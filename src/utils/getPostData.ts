@@ -22,7 +22,7 @@ export const getAllPostMetadata = async () => {
       return getPostMetaData(slug);
     })
   );
-  return posts;
+  return posts as PostMetadata[];
 };
 
 export const getPostContent = async (slug: string) => {
@@ -34,5 +34,5 @@ export const getPostContent = async (slug: string) => {
 export const getPostMetaData = async (slug: string) => {
   const fileContent = await fetchMarkdown(slug);
   if (!fileContent) return null;
-  return fileContent.metadata;
+  return fileContent.metadata as PostMetadata;
 };
