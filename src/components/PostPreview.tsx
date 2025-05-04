@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { getAllPostMetadata } from "../utils/getPostData";
-import { PostMetadata } from "../types/postMetadata";
+import { PostMetadata } from "../types/PostMetadata";
 import PostPreviewCard from "./PostPreviewCards";
 
 const PostPreview = () => {
