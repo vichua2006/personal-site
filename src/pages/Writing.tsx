@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import PostPreview from "../components/PostPreview";
 
 const Writing = () => {
   useEffect(() => {
@@ -25,9 +26,15 @@ const Writing = () => {
         Wish you some entertaining discoveries, enjoy!
       </p>
 
-      <p className="my-8 italic">
-        work in progress, stay tuned! (markdown rendering ugh)
-      </p>
+
+
+      <header>
+        <div className="font-bold mt-16">Entries</div>
+      </header>
+
+      <hr className="border-gray-700 my-4" />
+
+      <PostPreview />
     </div>
   );
 };

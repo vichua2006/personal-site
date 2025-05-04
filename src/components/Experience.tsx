@@ -9,7 +9,7 @@ const Experience = () => {
           <ProjectCard
             key={index}
             icon={project.icon}
-            bgImage={project.bgImage} 
+            bgImage={project.bgImage}
             title={project.title}
             description={project.description}
             link={project.link}
