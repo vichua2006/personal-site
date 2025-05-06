@@ -35,7 +35,7 @@ const Home = () => {
         >
           UWaterloo
         </a>
-        , who currently have no idea what he's doing in life, spending spare
+        , spending spare
         time as a devoted rock climber, badminton player, amateur photographer,
         and a wannabe writer for this site. Also occasionally found to be
         geeking out at theatre{" "}
