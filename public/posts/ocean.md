@@ -1,7 +1,7 @@
 ---
 title: "Ocean"
 description: "love & nostalgia"
-date: "05-14-2025"
+date: "05-10-2025"
 slug: "ocean"
 ---
 
