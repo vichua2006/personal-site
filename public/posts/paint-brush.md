@@ -1,6 +1,6 @@
 ---
 title: "Paint Brush"
-description: "fleeting-thougths"
+description: "adaptation"
 date: "05-05-2025"
 slug: "paint-brush"
 ---
