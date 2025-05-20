@@ -1,5 +1,7 @@
 
 const postSlugs = [
+    "smile2",
+    "smile",
     "ocean",
     "moth-ablaze",
     "paint-brush",
