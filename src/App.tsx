@@ -7,6 +7,7 @@ import About from './pages/About';
 import Photos from './pages/Photos';
 import Writing from './pages/Writing';
 import PostContent from "./pages/PostContent";
+import Footer from "./components/Footer";
 
 const App = () => {
   const [selectedPage, updateSelectedPage] = useState<string>("Home");
@@ -35,6 +36,7 @@ const App = () => {
           </Routes>
         </div>
       </div>
+      <Footer />
     </Router>
   );
 };
