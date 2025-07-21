@@ -16,7 +16,7 @@ const externals = {
     icon: <FaLinkedin />,
   },
   Email: { url: "mailto:victor.huang1@uwaterloo.ca", icon: <FaEnvelope /> },
-  Resume: { url: "https://github.com/vichua2006/resume/blob/main/Victor_Huang_Resume.pdf", icon: <FaFileAlt /> },
+  Resume: { url: "/resume.pdf", icon: <FaFileAlt /> },
 };
 
 interface Prop {
