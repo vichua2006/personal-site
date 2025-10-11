@@ -1,58 +1,44 @@
-import deCivLogo from "../../public/logos/de_civai_logo.png";
-import htnLogo from "../../public/logos/hack_the_north_logo.png";
-import unbLogo from "../../public/logos/unb_logo.png";
-import wargLogo from "../../public/logos/warg.png";
-import tmtLogo from "../../public/logos/tmt-w-logo.png";
-import atlcLogo from "../../public/logos/atlc_logo.png";
-// all banners should be approximately l:h = 5:1
-import htnBanner from "../../public/banner/htn-banner.png";
-import ucsbBanner from "../../public/banner/deciv-banner.png";
-import wargBanner from "../../public/banner/warg-banner.png";
-import unbBanner from "../../public/banner/unb-banner.png";
-import tmtBanner from "../../public/banner/tmt-ppl-banner.png";
-import atlcBanner from "../../public/banner/atlc-banner.png";
-
-
+// Using string paths to public assets (Next.js serves these from /public)
 export const projects = [
   {
-    icon: htnLogo,
-    bgImage: htnBanner,
+    icon: "/logos/hack_the_north_logo.png",
+    bgImage: "/banner/htn-banner.png",
     title: "Hack the North",
     description: "Canada's Biggest Hackathon",
     link: "https://hackthenorth.com/",
   },
   {
-    icon: tmtLogo,
+    icon: "/logos/tmt-w-logo.png",
     title: "Tom Morrison Theatre",
-    bgImage: tmtBanner,
+    bgImage: "/banner/tmt-ppl-banner.png",
     description: "Rocking Sound and Lighting!",
     link: "https://www.facebook.com/fhstmt/"
   },
   {
-    icon: wargLogo,
+    icon: "/logos/warg.png",
     title: "Waterloo Aerial Robotics Group",
-    bgImage: wargBanner,
+    bgImage: "/banner/warg-banner.png",
     description: "Drone Computer Vision",
     link: "https://www.uwarg.com/"
   },
   {
-    icon: deCivLogo,
+    icon: "/logos/de_civai_logo.png",
     title: "UC Santa Barabra",
-    bgImage: ucsbBanner,
+    bgImage: "/banner/deciv-banner.png",
     description: "Research On the Artificial Citizen",
     link: "https://www.linkedin.com/company/de-civai/posts/?feedView=all",
   },
   {
-    icon: unbLogo,
+    icon: "/logos/unb_logo.png",
     title: "UNB Physics Department",
-    bgImage: unbBanner,
+    bgImage: "/banner/unb-banner.png",
     description: "Exploring Lasers and Weather",
     link: "https://www.unb.ca/",
   },
   {
-    icon: atlcLogo,
+    icon: "/logos/atlc_logo.png",
     title: "Atlantic Star Math Club",
-    bgImage: atlcBanner,
+    bgImage: "/banner/atlc-banner.png",
     description: "Yappin' bout Math",
     link: "/"
   },
