@@ -1,9 +1,9 @@
-import deCivLogo from "../../public/logos/de_civai_logo.png";
-import htnLogo from "../../public/logos/hack_the_north_logo.png";
-import unbLogo from "../../public/logos/unb_logo.png";
+import deCivLogo from "../../public/logos/de-civai-logo.png";
+import htnLogo from "../../public/logos/hack-the-north-logo.png";
+import unbLogo from "../../public/logos/unb-logo.png";
 import wargLogo from "../../public/logos/warg.png";
 import tmtLogo from "../../public/logos/tmt-w-logo.png";
-import toolbxLogo from "../../public/logos/toolbx_logo.png";
+import toolbxLogo from "../../public/logos/toolbx-logo.png";
 // all banners should be approximately l:h = 5:1
 import htnBanner from "../../public/banner/htn-banner.png";
 import ucsbBanner from "../../public/banner/deciv-banner.png";
