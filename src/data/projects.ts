@@ -3,17 +3,24 @@ import htnLogo from "../../public/logos/hack_the_north_logo.png";
 import unbLogo from "../../public/logos/unb_logo.png";
 import wargLogo from "../../public/logos/warg.png";
 import tmtLogo from "../../public/logos/tmt-w-logo.png";
-import atlcLogo from "../../public/logos/atlc_logo.png";
+import toolbxLogo from "../../public/logos/toolbx_logo.png";
 // all banners should be approximately l:h = 5:1
 import htnBanner from "../../public/banner/htn-banner.png";
 import ucsbBanner from "../../public/banner/deciv-banner.png";
 import wargBanner from "../../public/banner/warg-banner.png";
 import unbBanner from "../../public/banner/unb-banner.png";
 import tmtBanner from "../../public/banner/tmt-ppl-banner.png";
-import atlcBanner from "../../public/banner/atlc-banner.png";
+import toolbxBanner from "../../public/banner/toolbx-banner.png";
 
 
 export const projects = [
+  {
+    icon: toolbxLogo,
+    bgImage: toolbxBanner,
+    title: "TOOLBX",
+    description: "Ecommerce for Modern Building Suppliers",
+    link: "https://toolbox.com/",
+  },
   {
     icon: htnLogo,
     bgImage: htnBanner,
@@ -48,12 +55,5 @@ export const projects = [
     bgImage: unbBanner,
     description: "Exploring Lasers and Weather",
     link: "https://www.unb.ca/",
-  },
-  {
-    icon: atlcLogo,
-    title: "Atlantic Star Math Club",
-    bgImage: atlcBanner,
-    description: "Yappin' bout Math",
-    link: "/"
   },
 ];
