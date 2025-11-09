@@ -36,18 +36,29 @@ const Home = () => {
           UWaterloo
         </a>
         , spending spare
-        time as a devoted rock climber, badminton player, amateur photographer,
-        and a wannabe writer for this site. Also occasionally found to be
+        time as a climber for some rocks and a writer for this site. Also occasionally found to be
         geeking out at theatre{" "}
         <a
           href="https://www.martin.com/en/products/mac-aura"
           className="z-50 text-violet-400 underline underline-offset-4"
         >
-          lighting fixtures.
+          lighting fixtures
         </a>
+        , DSA problems, and other people's personal websites.
       </p>
+
       <p className="my-4">
-        Currently a Backend Developer for{" "}
+        Currently building some fun payment solutions at {" "}
+        <a
+          href="https://toolbx.com/"
+          className="z-50 text-violet-400 underline underline-offset-4"
+        >
+          TOOLBX
+        </a>
+      </p>     
+
+      <p className="my-4">
+        Also a Backend Developer for{" "}
         <a
           href="https://hackthenorth.com/"
           className="z-50 text-violet-400 underline underline-offset-4"
