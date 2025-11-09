@@ -1,13 +1,11 @@
 
 const postSlugs = [
-    "puzzle",
+    "our-feelings",
     "speed-limit",
     "whiskey",
     "smile2",
     "smile",
     "ocean",
-    "moth-ablaze",
-    "paint-brush",
     "about-site",
 ]
 
