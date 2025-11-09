@@ -26,7 +26,7 @@ const App = () => {
 
 
         {/* Main Content Area */}
-        <div className="flex-1 ms-10 md:mx-[30%] mt-30 p-4 min-h-screen ">
+        <div className="flex-1 mx-10 md:mx-[30%] mt-30 p-4 min-h-screen ">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />

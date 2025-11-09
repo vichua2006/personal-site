@@ -1,15 +1,15 @@
 import { Link } from "react-router-dom";
-import { FaGithub, FaLinkedin, FaEnvelope, FaFileAlt, FaBars, FaTimes } from "react-icons/fa";
+import { FaGithub, FaLinkedin, FaEnvelope, FaFileAlt, FaBars, FaTimes, FaLink } from "react-icons/fa";
 import { useState } from "react";
 
 const links = {
   Home: "/",
   About: "/about",
   Writing: "/writing",
-  Photos: "/photos",
 };
 
 const externals = {
+  Arena: { url: "https://www.are.na/victor-huang/channels", icon: <FaLink /> },
   Github: { url: "https://github.com/vichua2006/", icon: <FaGithub /> },
   LinkedIn: {
     url: "https://linkedin.com/in/victor-qibin-huang",
