@@ -1,16 +1,16 @@
-import deCivLogo from "../../public/logos/de-civai-logo.png";
-import htnLogo from "../../public/logos/hack-the-north-logo.png";
-import unbLogo from "../../public/logos/unb-logo.png";
-import wargLogo from "../../public/logos/warg.png";
-import tmtLogo from "../../public/logos/tmt-w-logo.png";
-import toolbxLogo from "../../public/logos/toolbx-logo.png";
+import deCivLogo from "public/logos/de-civai-logo.png";
+import htnLogo from "public/logos/hack-the-north-logo.png";
+import unbLogo from "public/logos/unb-logo.png";
+import wargLogo from "public/logos/warg.png";
+import tmtLogo from "public/logos/tmt-w-logo.png";
+import toolbxLogo from "public/logos/toolbx-logo.png";
 // all banners should be approximately l:h = 5:1
-import htnBanner from "../../public/banner/htn-banner.png";
-import ucsbBanner from "../../public/banner/deciv-banner.png";
-import wargBanner from "../../public/banner/warg-banner.png";
-import unbBanner from "../../public/banner/unb-banner.png";
-import tmtBanner from "../../public/banner/tmt-ppl-banner.png";
-import toolbxBanner from "../../public/banner/toolbx-banner.png";
+import htnBanner from "public/banner/htn-banner.png";
+import ucsbBanner from "public/banner/deciv-banner.png";
+import wargBanner from "public/banner/warg-banner.png";
+import unbBanner from "public/banner/unb-banner.png";
+import tmtBanner from "public/banner/tmt-ppl-banner.png";
+import toolbxBanner from "public/banner/toolbx-banner.png";
 
 
 export const projects = [

@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import ReactMarkdown from "react-markdown";
-import { getPostContent, getPostMetaData } from "../utils/getPostData";
 import { Link } from "react-router-dom";
-import { PostMetadata } from "../types/PostMetadata";
-import postSlugs from "../data/postSlugs";
+import { getPostContent, getPostMetaData } from "src/utils/getPostData";
+import { PostMetadata } from "src/types/PostMetadata";
+import postSlugs from "src/data/postSlugs";
 
 const PostContent = () => {
   const { slug } = useParams(); // Access the dynamic parameter

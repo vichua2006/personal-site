@@ -1,5 +1,5 @@
-import postSlugs from "../data/postSlugs";
-import { PostMetadata } from "../types/PostMetadata";
+import postSlugs from "src/data/postSlugs";
+import { PostMetadata } from "src/types/PostMetadata";
 import frontMatter from "front-matter";
 
 const fetchMarkdown = async (slug: string) => {

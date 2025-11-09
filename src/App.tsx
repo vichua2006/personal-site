@@ -1,13 +1,13 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Sidebar from "./components/Sidebar";
-import Spotlight from "./components/Spotlight";
-import Home from "./pages/Home";
 import { useState } from "react";
-import About from './pages/About';
-import Photos from './pages/Photos';
-import Writing from './pages/Writing';
-import PostContent from "./pages/PostContent";
-import Footer from "./components/Footer";
+import Sidebar from "src/components/Sidebar";
+import Spotlight from "src/components/Spotlight";
+import Home from "src/pages/Home";
+import About from "src/pages/About";
+import Photos from "src/pages/Photos";
+import Writing from "src/pages/Writing";
+import PostContent from "src/pages/PostContent";
+import Footer from "src/components/Footer";
 
 const App = () => {
   const [selectedPage, updateSelectedPage] = useState<string>("Home");

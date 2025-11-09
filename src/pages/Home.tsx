@@ -1,6 +1,6 @@
 import { useEffect } from "react";
-import Header from "../components/Header";
-import Experience from "../components/Experience";
+import Header from "src/components/Header";
+import Experience from "src/components/Experience";
 
 const Home = () => {
   // TODO: refactor to properly display hidden text

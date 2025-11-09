@@ -1,5 +1,5 @@
-import ProjectCard from "../components/ProjectCards";
-import { projects } from "../data/projects";
+import ProjectCard from "src/components/ProjectCards";
+import { projects } from "src/data/projects";
 
 const Experience = () => {
   return (

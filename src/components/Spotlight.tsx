@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
-import lightOn from "../../public/spotlight-light-on.png";
-import lightOff from "../../public/spotlight-light-off.png";
+import lightOn from "public/spotlight-light-on.png";
+import lightOff from "public/spotlight-light-off.png";
 
 const radius = 250; // in px
 const diameter = 2 * radius;

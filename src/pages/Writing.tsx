@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import PostPreview from "../components/PostPreview";
+import PostPreview from "src/components/PostPreview";
 
 const Writing = () => {
   useEffect(() => {
