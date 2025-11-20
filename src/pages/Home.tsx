@@ -1,6 +1,5 @@
 import Header from "src/components/Header";
 import Experience from "src/components/Experience";
-import SpotlightText from "src/components/SpotlightText";
 
 const Home = () => {
   return (
@@ -55,16 +54,9 @@ const Home = () => {
 
       <br></br>
 
-      <p className="hidden md:block my-4">
+      <p className="text-sm hidden md:block my-4">
         P.S. <i>try turning the light on</i>
       </p>
-      <p className="text-sm italic">
-        <SpotlightText>
-          (will eventually have things that only show when lit! still in progress
-          🔧💪)
-        </SpotlightText>
-      </p>
-
       <hr className="border-gray-700 my-8" />
 
       <header>
