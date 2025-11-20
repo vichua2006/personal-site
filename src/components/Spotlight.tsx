@@ -1,12 +1,16 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import lightOn from "public/spotlight-light-on.png";
 import lightOff from "public/spotlight-light-off.png";
 
 const radius = 250; // in px
 const diameter = 2 * radius;
 
-const Spotlight = () => {
-  const [isLightOn, updateIsLightOn] = useState(false);
+interface SpotlightProps {
+  isLightOn: boolean;
+  updateIsLightOn: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+const Spotlight = ({ isLightOn, updateIsLightOn }: SpotlightProps) => {
   // directly manipulate DOM element for efficiency
   // otherwise spotlight lags too hard
   const spotlightRef = useRef<HTMLDivElement>(null);
@@ -14,6 +18,16 @@ const Spotlight = () => {
   let lightOpacity = 0;
 
   const handleMouseMove = (e: MouseEvent) => {
+    // Update CSS variables for spotlight text reveal
+    if (isLightOn) {
+      document.documentElement.style.setProperty('--spotlight-x', `${e.clientX}px`);
+      document.documentElement.style.setProperty('--spotlight-y', `${e.clientY}px`);
+      document.documentElement.style.setProperty('--spotlight-radius', `${radius}px`);
+      document.documentElement.style.setProperty('--spotlight-on', '1');
+    } else {
+      document.documentElement.style.setProperty('--spotlight-on', '0');
+    }
+
     if (spotlightRef.current) {
       // Update the spotlight position
       spotlightRef.current.style.transform = `translate(${
@@ -47,15 +61,23 @@ const Spotlight = () => {
     }
   };
 
+  // Update CSS variables immediately when spotlight state changes
+  useEffect(() => {
+    if (!isLightOn) {
+      document.documentElement.style.setProperty('--spotlight-on', '0');
+    } else {
+      document.documentElement.style.setProperty('--spotlight-on', '1');
+    }
+  }, [isLightOn]);
+
   // add listener to entire window; fixes nav bar bug
   useEffect(() => {
-    // Simulate a mouse event at the center of the screen
     window.addEventListener("mousemove", handleMouseMove);
 
     return () => {
       window.removeEventListener("mousemove", handleMouseMove);
     }
-  }, [])
+  }, [isLightOn])
 
   return (
     <div

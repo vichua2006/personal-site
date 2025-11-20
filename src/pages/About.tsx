@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import SpotlightText from "src/components/SpotlightText";
 
 const About = () => {
   useEffect(() => {
@@ -33,6 +34,11 @@ const About = () => {
         everything run smoothly.
       </p>
 
+      {/* TESTING: Hidden spotlight text - leave this for testing purposes */}
+      <p className="my-4">
+        <SpotlightText>This is a hidden text element for testing the spotlight reveal effect. Turn on the spotlight and move your cursor over this area to see it appear!</SpotlightText>
+      </p>
+
       <p className="my-4">
         Today, I strive to carry that same spirit into software development:
         building systems and tools that may not always be seen, but are
@@ -41,7 +47,7 @@ const About = () => {
       </p>
 
       <p className="my-8 italic">
-        hmm, it looks a little dark down there...
+        <SpotlightText>hmm, it looks a little dark down there...</SpotlightText>
       </p>
     </div>
   );
