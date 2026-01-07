@@ -96,3 +96,28 @@
   border-top: 1px solid #374151; /* Dark gray line */
   margin: 1.5rem 0;
 }
+
+/* Spotlight Text */
+/* Initialize CSS variables with default values */
+:root {
+  --spotlight-x: 0px;
+  --spotlight-y: 0px;
+  --spotlight-radius: 250px;
+  --spotlight-on: 0;
+}
+
+/* Spotlight text - hidden by default, revealed when spotlight is on */
+.spotlight-text {
+  color: white;
+  /* Clip-path is calculated and set via JavaScript to account for element position */
+  /* Default hidden state */
+  clip-path: circle(0px at 0px 0px);
+  transition: clip-path 0.05s linear;
+}
+
+/* On mobile, always show the text (spotlight is hidden on mobile) */
+@media (max-width: 768px) {
+  .spotlight-text {
+    clip-path: none;
+  }
+}

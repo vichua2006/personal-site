@@ -1,10 +1,12 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import ReactMarkdown from "react-markdown";
 import { Link } from "react-router-dom";
+import rehypeRaw from "rehype-raw";
 import { getPostContent, getPostMetaData } from "src/utils/getPostData";
 import { PostMetadata } from "src/types/PostMetadata";
 import postSlugs from "src/data/postSlugs";
+import SpotlightText from "src/components/SpotlightText";
 
 const PostContent = () => {
   const { slug } = useParams(); // Access the dynamic parameter
@@ -38,7 +40,17 @@ const PostContent = () => {
           <div className="markdown-container">
             <h2>{metadata?.title}</h2>
             <p className="text-md text-gray-400 italic">{metadata?.date}</p>
-            <ReactMarkdown>{mkdContent}</ReactMarkdown>
+            <ReactMarkdown
+              rehypePlugins={[rehypeRaw]}
+              components={{
+                // Map custom spotlight HTML tag to SpotlightText component
+                spotlight: ({ children, ...props }: { children?: React.ReactNode; [key: string]: any }) => (
+                  <SpotlightText {...props}>{children}</SpotlightText>
+                ),
+              } as any}
+            >
+              {mkdContent}
+            </ReactMarkdown>
           </div>
           {mkdContent.length > 1000 ? ( // parent link for longer posts
             <Link to="/writing" className="text-white flex items-center my-32">

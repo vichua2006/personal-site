@@ -1,29 +1,7 @@
-import { useEffect } from "react";
 import Header from "src/components/Header";
 import Experience from "src/components/Experience";
 
 const Home = () => {
-  // TODO: refactor to properly display hidden text
-  // const [spotlightPosition, setSpotlightPosition] = useState({ x: 0, y: 0 });
-
-  const handleMouseMove = (e: MouseEvent) => {
-    // setSpotlightPosition({ x: e.clientX, y: e.clientY });
-    e;
-  };
-
-
-  useEffect(() => {
-    // Attach mousemove listener to track spotlight position
-    window.addEventListener("mousemove", handleMouseMove);
-
-    // reset to top of page
-    // window.scrollTo(0, 0);
-
-    return () => {
-      window.removeEventListener("mousemove", handleMouseMove);
-    };
-  }, []);
-
   return (
     <div className="text-white z-50">
       <Header />
@@ -76,27 +54,14 @@ const Home = () => {
 
       <br></br>
 
-      <p className="hidden md:block my-4">
+      <p className="text-sm hidden md:block my-4">
         P.S. <i>try turning the light on</i>
       </p>
-      <p className="text-sm italic">
-        (will eventually have things that only show when lit! still in progress
-        🔧💪)
-      </p>
-
       <hr className="border-gray-700 my-8" />
 
       <header>
         <div className="font-bold">Experience</div>
       </header>
-{/* 
-      <div
-        style={{
-          clipPath: `circle(150px at ${spotlightPosition.x}px ${spotlightPosition.y}px)`,
-        }}
-      >
-        <p className="italic">hmm but this really ain't that bad ;)</p>
-      </div> */}
 
       <Experience />
     </div>

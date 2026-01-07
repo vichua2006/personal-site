@@ -11,12 +11,13 @@ import Footer from "src/components/Footer";
 
 const App = () => {
   const [selectedPage, updateSelectedPage] = useState<string>("Home");
+  const [isLightOn, updateIsLightOn] = useState(false);
 
   return (
     <Router>
       <div style={{ display: "flex", minHeight: "100vh" }}>
         <div className="hidden md:block">
-          <Spotlight />
+          <Spotlight isLightOn={isLightOn} updateIsLightOn={updateIsLightOn} />
         </div>
         {/* Sidebar */}
         <Sidebar
