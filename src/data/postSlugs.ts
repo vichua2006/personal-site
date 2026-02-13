@@ -1,5 +1,6 @@
 
 const postSlugs = [
+    "silly-drunkness",
     "our-feelings",
     "speed-limit",
     "whiskey",
