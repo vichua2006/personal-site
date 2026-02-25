@@ -26,17 +26,18 @@ const Home = () => {
       </p>
 
       <p className="my-4">
-        Currently building some fun payment solutions at {" "}
+        Going to be building some fun platform features at {" "}
         <a
-          href="https://toolbx.com/"
+          href="https://ethglobal.com/"
           className="z-50 text-violet-400 underline underline-offset-4"
         >
-          TOOLBX
+          ETHGlobal
         </a>
+        {" "} this summer.
       </p>     
 
       <p className="my-4">
-        Also a Backend Developer for{" "}
+        Also serving as Backend Lead for{" "}
         <a
           href="https://hackthenorth.com/"
           className="z-50 text-violet-400 underline underline-offset-4"
