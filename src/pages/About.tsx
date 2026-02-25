@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import SpotlightText from "src/components/SpotlightText";
 
 const About = () => {
   useEffect(() => {
@@ -43,6 +44,18 @@ const About = () => {
       <p className="my-8 italic">
         hmm, it looks a little dark down there...
       </p>
+
+      <SpotlightText>
+        <p className="my-8 italic">
+          ...
+        </p>
+        <p className="my-8 italic">
+          ...
+        </p>
+        <p className="my-8 italic">
+          But on occasions when appropriate, I also don't mind becoming the actor and getting a lil bit of that spotlight ;)
+        </p>
+      </SpotlightText>
     </div>
   );
 };
