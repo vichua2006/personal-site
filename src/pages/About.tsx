@@ -41,6 +41,24 @@ const About = () => {
         meaningful.
       </p>
 
+      <p className="my-4">
+        Most recently, I was a Software Engineering Intern at{" "}
+        <a
+          href="https://ethglobal.com/"
+          className="z-50 text-violet-400 underline underline-offset-4"
+        >
+          ETHGlobal
+        </a>
+        . This fall, I&apos;m heading to{" "}
+        <a
+          href="https://web.aiu.ac.jp/en/"
+          className="z-50 text-violet-400 underline underline-offset-4"
+        >
+          Akita International University
+        </a>{" "}
+        in Japan on exchange.
+      </p>
+
       <p className="my-8 italic">
         hmm, it looks a little dark down there...
       </p>
