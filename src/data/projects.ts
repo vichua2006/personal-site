@@ -4,7 +4,7 @@ import unbLogo from "public/logos/unb-logo.png";
 import wargLogo from "public/logos/warg.png";
 import tmtLogo from "public/logos/tmt-w-logo.png";
 import toolbxLogo from "public/logos/toolbx-logo.png";
-import ethglobalLogo from "public/logos/ethglobal-logo.jpeg";
+import ethglobalLogo from "public/logos/ethglobal-logo.png";
 // all banners should be approximately l:h = 5:1
 import htnBanner from "public/banner/htn-banner.jpeg";
 import ucsbBanner from "public/banner/deciv-banner.png";
