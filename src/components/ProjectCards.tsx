@@ -1,5 +1,3 @@
-import { Link } from "react-router-dom";
-
 interface ProjectCardProps {
   icon: string; // URL or path to the icon
   bgImage: string;
@@ -16,8 +14,8 @@ const ProjectCard = ({
   link
 }: ProjectCardProps) => {
   return (
-    <Link
-      to={link} 
+    <a
+      href={link}
       className="z-50"
     >
       <div className="relative flex items-center p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 overflow-hidden group">
@@ -48,7 +46,7 @@ const ProjectCard = ({
           ></div>
         </div>
       </div>
-    </Link>
+    </a>
   );
 };
 

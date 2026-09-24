@@ -1,19 +1,6 @@
-import { useEffect } from "react";
-import SpotlightText from "src/components/SpotlightText";
+import { SpotlightBlock } from "src/components/SpotlightText";
 
 const About = () => {
-  useEffect(() => {
-    // Disable scrolling
-    // document.body.style.overflow = "hidden";
-
-    // reset to top of page
-    window.scrollTo(0, 0);
-
-    return () => {
-      // Re-enable scrolling when the component unmounts
-      document.body.style.overflow = "";
-    };
-  }, []);
   return (
     <div className="text-white">
       <div className="font-bold mb-4 ">About</div>
@@ -63,17 +50,14 @@ const About = () => {
         hmm, it looks a little dark down there...
       </p>
 
-      <SpotlightText>
-        <p className="my-8 italic">
-          ...
-        </p>
+      <SpotlightBlock>
         <p className="my-8 italic">
           ...
         </p>
         <p className="my-8 italic">
           But on occasions when appropriate, I also don't mind becoming the actor and getting a lil bit of that spotlight ;)
         </p>
-      </SpotlightText>
+      </SpotlightBlock>
     </div>
   );
 };

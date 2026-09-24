@@ -1,4 +1,7 @@
-import { Link } from "react-router-dom";
+"use client";
+
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { FaGithub, FaLinkedin, FaEnvelope, FaFileAlt, FaBars, FaTimes, FaLink } from "react-icons/fa";
 import { useState } from "react";
 
@@ -19,22 +22,20 @@ const externals = {
   Resume: { url: "/resume.pdf", icon: <FaFileAlt /> },
 };
 
-interface Prop {
-  selectedPage: string;
-  handlePageSelection: React.Dispatch<React.SetStateAction<string>>;
-}
-
-const Sidebar = ({ selectedPage, handlePageSelection }: Prop) => {
+const Sidebar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const pathname = usePathname() ?? "";
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
 
-  const handleLinkClick = (text: string) => {
-    handlePageSelection(text);
+  const handleLinkClick = () => {
     setIsMobileMenuOpen(false); // Close mobile menu when link is clicked
   };
+
+  const isSelected = (url: string) =>
+    url === "/" ? pathname === url : pathname === url || pathname.startsWith(`${url}/`);
 
   return (
     <>
@@ -54,11 +55,10 @@ const Sidebar = ({ selectedPage, handlePageSelection }: Prop) => {
           {Object.entries(links).map(([text, url]) => (
             <li key={text}>
               <Link
-                to={url}
+                href={url}
                 className={`block text-gray-300 hover:text-white ${
-                  text === selectedPage ? "font-bold" : ""
+                  isSelected(url) ? "font-bold" : ""
                 }`}
-                onClick={() => handlePageSelection(text)}
               >
                 {text}
               </Link>
@@ -103,11 +103,11 @@ const Sidebar = ({ selectedPage, handlePageSelection }: Prop) => {
           {Object.entries(links).map(([text, url]) => (
             <li key={text}>
               <Link
-                to={url}
+                href={url}
                 className={`block text-gray-300 hover:text-white text-lg ${
-                  text === selectedPage ? "font-bold text-white" : ""
+                  isSelected(url) ? "font-bold text-white" : ""
                 }`}
-                onClick={() => handleLinkClick(text)}
+                onClick={handleLinkClick}
               >
                 {text}
               </Link>

@@ -27,7 +27,7 @@ and the sound of her joyous laughter.
 <br></br>
 
 
-<spotlight>
+:::spotlight
 
 *... And on your birthday, may you find the ocean,*
 
@@ -42,4 +42,4 @@ and the sound of her joyous laughter.
 *washed upon the shore of happiness.*
 
  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;— a birthday gift from [An](https://antran.vercel.app/), thank you for being such a great friend and this absolutely awesome poem.
-</spotlight>
+:::

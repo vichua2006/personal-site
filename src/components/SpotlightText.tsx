@@ -1,73 +1,69 @@
-import React, { useRef, useEffect } from "react";
+"use client";
+
+import { useEffect, useRef, type ReactNode } from "react";
 
 interface SpotlightTextProps {
-  children: React.ReactNode;
+  children: ReactNode;
   className?: string;
 }
 
-const SpotlightText = ({ children, className = "" }: SpotlightTextProps) => {
-  const textRef = useRef<HTMLSpanElement>(null);
+function useSpotlightClip<T extends HTMLElement>() {
+  const textRef = useRef<T>(null);
 
   useEffect(() => {
     const updateClipPath = () => {
-      if (!textRef.current) return;
+      const element = textRef.current;
+      if (!element) return;
 
-      // Get the element's position relative to the viewport
-      const rect = textRef.current.getBoundingClientRect();
-      
-      // Get the global CSS variables
-      const spotlightX = parseFloat(
-        getComputedStyle(document.documentElement)
-          .getPropertyValue('--spotlight-x')
-          .replace('px', '')
-      ) || 0;
-      const spotlightY = parseFloat(
-        getComputedStyle(document.documentElement)
-          .getPropertyValue('--spotlight-y')
-          .replace('px', '')
-      ) || 0;
-      const spotlightRadius = parseFloat(
-        getComputedStyle(document.documentElement)
-          .getPropertyValue('--spotlight-radius')
-          .replace('px', '')
-      ) || 250;
-      const spotlightOn = parseFloat(
-        getComputedStyle(document.documentElement)
-          .getPropertyValue('--spotlight-on')
-      ) || 0;
+      // The fixture is hidden on mobile; hidden text stays readable there.
+      if (window.matchMedia("(max-width: 768px)").matches) {
+        element.style.clipPath = "none";
+        return;
+      }
 
-      // Calculate position relative to this element's bounding box
-      const relativeX = spotlightX - rect.left;
-      const relativeY = spotlightY - rect.top;
-      const radius = spotlightOn * spotlightRadius;
+      const rect = element.getBoundingClientRect();
+      const rootStyle = getComputedStyle(document.documentElement);
+      const x = parseFloat(rootStyle.getPropertyValue("--spotlight-x")) || 0;
+      const y = parseFloat(rootStyle.getPropertyValue("--spotlight-y")) || 0;
+      const radius = parseFloat(rootStyle.getPropertyValue("--spotlight-radius")) || 250;
+      const isOn = parseFloat(rootStyle.getPropertyValue("--spotlight-on")) || 0;
 
-      // Update the clip-path for this specific element
-      textRef.current.style.clipPath = `circle(${radius}px at ${relativeX}px ${relativeY}px)`;
+      element.style.clipPath = `circle(${isOn * radius}px at ${x - rect.left}px ${y - rect.top}px)`;
     };
 
-    // Update on mount
     updateClipPath();
-    
-    // Listen for mouse moves, clicks, scroll, and resize to update clip-path
-    window.addEventListener('mousemove', updateClipPath);
-    window.addEventListener('click', updateClipPath);
-    window.addEventListener('scroll', updateClipPath, true);
-    window.addEventListener('resize', updateClipPath);
+    window.addEventListener("mousemove", updateClipPath);
+    window.addEventListener("click", updateClipPath);
+    window.addEventListener("scroll", updateClipPath, true);
+    window.addEventListener("resize", updateClipPath);
 
     return () => {
-      window.removeEventListener('mousemove', updateClipPath);
-      window.removeEventListener('click', updateClipPath);
-      window.removeEventListener('scroll', updateClipPath, true);
-      window.removeEventListener('resize', updateClipPath);
+      window.removeEventListener("mousemove", updateClipPath);
+      window.removeEventListener("click", updateClipPath);
+      window.removeEventListener("scroll", updateClipPath, true);
+      window.removeEventListener("resize", updateClipPath);
     };
   }, []);
 
+  return textRef;
+}
+
+export function SpotlightInline({ children, className = "" }: SpotlightTextProps) {
+  const textRef = useSpotlightClip<HTMLSpanElement>();
   return (
     <span ref={textRef} className={`spotlight-text ${className}`}>
       {children}
     </span>
   );
-};
+}
 
-export default SpotlightText;
+export function SpotlightBlock({ children, className = "" }: SpotlightTextProps) {
+  const textRef = useSpotlightClip<HTMLDivElement>();
+  return (
+    <div ref={textRef} className={`spotlight-text ${className}`}>
+      {children}
+    </div>
+  );
+}
 
+export default SpotlightInline;

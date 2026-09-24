@@ -1,117 +1,80 @@
-import { useEffect, useRef } from "react";
-import lightOn from "public/spotlight-light-on.png";
-import lightOff from "public/spotlight-light-off.png";
+"use client";
 
-const radius = 250; // in px
+import { useEffect, useRef, type Dispatch, type SetStateAction } from "react";
+
+const radius = 250;
 const diameter = 2 * radius;
 
 interface SpotlightProps {
   isLightOn: boolean;
-  updateIsLightOn: React.Dispatch<React.SetStateAction<boolean>>;
+  updateIsLightOn: Dispatch<SetStateAction<boolean>>;
 }
 
 const Spotlight = ({ isLightOn, updateIsLightOn }: SpotlightProps) => {
-  // directly manipulate DOM element for efficiency
-  // otherwise spotlight lags too hard
   const spotlightRef = useRef<HTMLDivElement>(null);
-  const lightImageRef = useRef<HTMLImageElement>(null); // Ref for the light image
-  let lightOpacity = 0;
+  const lightImageRef = useRef<HTMLImageElement>(null);
 
-  const handleMouseMove = (e: MouseEvent) => {
-    // Update CSS variables for spotlight text reveal
-    if (isLightOn) {
-      document.documentElement.style.setProperty('--spotlight-x', `${e.clientX}px`);
-      document.documentElement.style.setProperty('--spotlight-y', `${e.clientY}px`);
-      document.documentElement.style.setProperty('--spotlight-radius', `${radius}px`);
-      document.documentElement.style.setProperty('--spotlight-on', '1');
-    } else {
-      document.documentElement.style.setProperty('--spotlight-on', '0');
-    }
-
-    if (spotlightRef.current) {
-      // Update the spotlight position
-      spotlightRef.current.style.transform = `translate(${
-        e.clientX - radius
-      }px, ${e.clientY - radius}px)`;
-      spotlightRef.current.style.opacity = String(lightOpacity);
-    }
-    if (lightImageRef.current) {
-      // Rotate the light fixture
-      const spotlightRect = lightImageRef.current.getBoundingClientRect();
-      const spotlightCenterX = spotlightRect.left + spotlightRect.width / 2;
-      const spotlightCenterY = spotlightRect.top + spotlightRect.height / 2;
-
-      const deltaX = e.x - spotlightCenterX;
-      const deltaY = e.y - spotlightCenterY;
-
-      // Compute the light's opacity (dims as it gets close to the fixture)
-      const dist = deltaX * deltaX + deltaY * deltaY;
-      lightOpacity =
-        (20 / 100) * Math.min(1, Math.max(0, (dist - 1e3) / (radius * radius)));
-
-      // prevent glitchly movements from being too close to point of rotation
-      if (dist < (radius * radius / 16)) return;
-
-      // Calculate the angle between the cursor and the spotlight center
-      const angle = Math.atan2(deltaY, deltaX) * (180 / Math.PI); // Convert radians to degrees
-
-      // Rotate the light image to face the cursor
-      lightImageRef.current.style.transform = `rotate(${angle - 90}deg)`;
-      lightImageRef.current.style.transformOrigin = "center 30%"; // Rotate around the bottom center
-    }
-  };
-
-  // Update CSS variables immediately when spotlight state changes
   useEffect(() => {
-    if (!isLightOn) {
-      document.documentElement.style.setProperty('--spotlight-on', '0');
-    } else {
-      document.documentElement.style.setProperty('--spotlight-on', '1');
-    }
+    const rootStyle = document.documentElement.style;
+    rootStyle.setProperty("--spotlight-on", isLightOn ? "1" : "0");
+    rootStyle.setProperty("--spotlight-radius", `${radius}px`);
+
+    const handleMouseMove = (event: MouseEvent) => {
+      rootStyle.setProperty("--spotlight-x", `${event.clientX}px`);
+      rootStyle.setProperty("--spotlight-y", `${event.clientY}px`);
+
+      const fixture = lightImageRef.current;
+      if (!fixture) return;
+
+      const fixtureRect = fixture.getBoundingClientRect();
+      const deltaX = event.clientX - (fixtureRect.left + fixtureRect.width / 2);
+      const deltaY = event.clientY - (fixtureRect.top + fixtureRect.height / 2);
+      const distanceSquared = deltaX * deltaX + deltaY * deltaY;
+
+      const glow = spotlightRef.current;
+      if (glow) {
+        glow.style.transform = `translate(${event.clientX - radius}px, ${event.clientY - radius}px)`;
+        glow.style.opacity = String(
+          0.2 * Math.min(1, Math.max(0, (distanceSquared - 1e3) / (radius * radius))),
+        );
+      }
+
+      // Avoid unstable rotation when the cursor is close to the pivot.
+      if (distanceSquared < radius * radius / 16) return;
+
+      const angle = Math.atan2(deltaY, deltaX) * (180 / Math.PI);
+      fixture.style.transform = `rotate(${angle - 90}deg)`;
+      fixture.style.transformOrigin = "center 30%";
+    };
+
+    window.addEventListener("mousemove", handleMouseMove);
+    return () => window.removeEventListener("mousemove", handleMouseMove);
   }, [isLightOn]);
 
-  // add listener to entire window; fixes nav bar bug
-  useEffect(() => {
-    window.addEventListener("mousemove", handleMouseMove);
-
-    return () => {
-      window.removeEventListener("mousemove", handleMouseMove);
-    }
-  }, [isLightOn])
-
   return (
-    <div
-      className="overflow-hidden"
-    >
-      {/* Spotlight */}
-      {isLightOn ? (
+    <div className="overflow-hidden">
+      {isLightOn && (
         <div
           ref={spotlightRef}
-          className={`pointer-events-none fixed rounded-full bg-violet-500`}
+          className="pointer-events-none fixed z-40 rounded-full bg-violet-500"
           style={{
-            opacity: lightOpacity, // initial opacity
+            opacity: 0,
             width: `${diameter}px`,
             height: `${diameter}px`,
-            transform: `translate(-${diameter}px, -${diameter}px)`, // Initial position
-            transition: "opacity 0.2s ease-out", // Smooth transition for opacity
+            transform: `translate(-${diameter}px, -${diameter}px)`,
+            transition: "opacity 0.2s ease-out",
           }}
-        ></div>
-      ) : (
-        <></>
+        />
       )}
 
-      {/* Fixture */}
       <div className="absolute top-30 right-0 relative">
         <img
-          onClick={() => updateIsLightOn(!isLightOn)}
-          ref={lightImageRef} // Reference for direct DOM manipulation
-          src={isLightOn ? lightOn : lightOff}
+          onClick={() => updateIsLightOn((current) => !current)}
+          ref={lightImageRef}
+          src={isLightOn ? "/spotlight-light-on.png" : "/spotlight-light-off.png"}
           alt="Spotlight light"
-          className="fixed absolute top-30 right-0 left-13/16 transform -translate-x-1/2"
-          style={{
-            width: "150px",
-            height: "auto",
-          }}
+          className="fixed absolute z-50 top-30 right-0 left-13/16 transform -translate-x-1/2"
+          style={{ width: "150px", height: "auto" }}
         />
       </div>
     </div>

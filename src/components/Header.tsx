@@ -1,9 +1,9 @@
-import { Link } from "react-router-dom";
+import Link from "next/link";
 
 const Header = () => {
   return (
     <header className="text-white">
-      <Link to="/">
+      <Link href="/">
         <div className="font-bold italic">Victor Huang</div>
       </Link>
     </header>
