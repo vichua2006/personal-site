@@ -18,10 +18,15 @@ const Spotlight = ({ isLightOn, updateIsLightOn }: SpotlightProps) => {
     const rootStyle = document.documentElement.style;
     rootStyle.setProperty("--spotlight-on", isLightOn ? "1" : "0");
     rootStyle.setProperty("--spotlight-radius", `${radius}px`);
+    window.dispatchEvent(new Event("spotlightchange"));
 
     const handleMouseMove = (event: MouseEvent) => {
       rootStyle.setProperty("--spotlight-x", `${event.clientX}px`);
       rootStyle.setProperty("--spotlight-y", `${event.clientY}px`);
+      if (document.documentElement.dataset.spotlightKeyboardReveal === "true") {
+        delete document.documentElement.dataset.spotlightKeyboardReveal;
+        window.dispatchEvent(new Event("spotlightchange"));
+      }
 
       const fixture = lightImageRef.current;
       if (!fixture) return;
@@ -68,14 +73,26 @@ const Spotlight = ({ isLightOn, updateIsLightOn }: SpotlightProps) => {
       )}
 
       <div className="absolute top-30 right-0 relative">
-        <img
-          onClick={() => updateIsLightOn((current) => !current)}
-          ref={lightImageRef}
-          src={isLightOn ? "/spotlight-light-on.png" : "/spotlight-light-off.png"}
-          alt="Spotlight light"
-          className="fixed absolute z-50 top-30 right-0 left-13/16 transform -translate-x-1/2"
-          style={{ width: "150px", height: "auto" }}
-        />
+        <button
+          type="button"
+          aria-label="Toggle spotlight"
+          aria-pressed={isLightOn}
+          onClick={(event) => {
+            const nextIsOn = !isLightOn;
+            document.documentElement.dataset.spotlightKeyboardReveal =
+              event.detail === 0 && nextIsOn ? "true" : "false";
+            updateIsLightOn(nextIsOn);
+          }}
+          className="fixed z-50 top-30 right-0 left-13/16 w-[150px] -translate-x-1/2 border-0 bg-transparent p-0 cursor-pointer focus-visible:outline-2 focus-visible:outline-violet-400"
+        >
+          <img
+            ref={lightImageRef}
+            src={isLightOn ? "/spotlight-light-on.png" : "/spotlight-light-off.png"}
+            alt=""
+            className="block"
+            style={{ width: "150px", height: "auto" }}
+          />
+        </button>
       </div>
     </div>
   );

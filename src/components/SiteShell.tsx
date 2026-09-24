@@ -15,7 +15,7 @@ export default function SiteShell({ children }: { children: React.ReactNode }) {
           <Spotlight isLightOn={isLightOn} updateIsLightOn={updateIsLightOn} />
         </div>
         <Sidebar />
-        <main className="flex-1 mx-10 md:mx-[30%] mt-30 p-4">
+        <main className="flex-1 mx-3 md:mx-[30%] mt-30 p-3 md:p-4">
           {children}
         </main>
       </div>

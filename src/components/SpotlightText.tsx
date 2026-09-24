@@ -16,7 +16,10 @@ function useSpotlightClip<T extends HTMLElement>() {
       if (!element) return;
 
       // The fixture is hidden on mobile; hidden text stays readable there.
-      if (window.matchMedia("(max-width: 768px)").matches) {
+      if (
+        window.matchMedia("(max-width: 768px)").matches ||
+        document.documentElement.dataset.spotlightKeyboardReveal === "true"
+      ) {
         element.style.clipPath = "none";
         return;
       }
@@ -34,12 +37,14 @@ function useSpotlightClip<T extends HTMLElement>() {
     updateClipPath();
     window.addEventListener("mousemove", updateClipPath);
     window.addEventListener("click", updateClipPath);
+    window.addEventListener("spotlightchange", updateClipPath);
     window.addEventListener("scroll", updateClipPath, true);
     window.addEventListener("resize", updateClipPath);
 
     return () => {
       window.removeEventListener("mousemove", updateClipPath);
       window.removeEventListener("click", updateClipPath);
+      window.removeEventListener("spotlightchange", updateClipPath);
       window.removeEventListener("scroll", updateClipPath, true);
       window.removeEventListener("resize", updateClipPath);
     };
