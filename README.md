@@ -29,10 +29,10 @@ a fresh build and deploy. The small packaging script bypasses `cf init`'s automa
 OpenNext migration, which adds a server adapter this static site does not need.
 The CLI and build-output packages are pinned together because these APIs are in beta.
 
-For automatic deployments, push these files, then connect this repository in the
-Worker's **Settings → Builds** using production branch `main`, build command
-`npm run build:cloudflare`, and deploy command `npx cf deploy --prebuilt`.
-Leave preview builds disabled until a separate preview command is configured.
+Cloudflare Builds is connected to `vichua2006/personal-site`. Pushes to `main`
+automatically deploy using build command `npm run build:cloudflare` and deploy
+command `npx cf deploy --prebuilt`, with the repository root as the working directory.
+Preview builds are disabled until a separate preview command is configured.
 See [Workers Builds](https://developers.cloudflare.com/workers/ci-cd/builds/).
 
 The production Worker is `personal-site`, with custom domains `victor-huang.ca` and
