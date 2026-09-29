@@ -5,7 +5,7 @@ date: "05-19-2025"
 slug: "smile2"
 ---
 
-*continuation of [Smile](https://victorhuang.vercel.app/writing/smile)*
+*continuation of [Smile](/writing/smile)*
 
 ...
 
