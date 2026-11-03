@@ -13,7 +13,7 @@ export default function ArtifactsPage() {
       </p>
 
       <p className="my-8 italic">
-        These are unpolished but concrete and honest demonstrations of what I've
+        These are unprocessed but honest documentations of what I've
         done. Enjoy.
       </p>
 
@@ -25,6 +25,18 @@ export default function ArtifactsPage() {
 
       <div className="mt-4">
         <div className="space-y-4">
+          <div className="flex justify-between items-center gap-4 py-2">
+            <div className="min-w-0 flex-1">
+              <Link href="/artifacts/national-math-and-programming-competition-results">
+                <h3 className="text-md text-white font-medium hover:underline underline-offset-4">
+                  National Math and Programming Competition Results
+                </h3>
+              </Link>
+            </div>
+            <div className="shrink-0 text-right text-sm text-gray-400 italic">
+              2020 - 2024
+            </div>
+          </div>
           <div className="flex justify-between items-center gap-4 py-2">
             <div className="min-w-0 flex-1">
               <Link href="/artifacts/provincial-programming-contest-winner">

@@ -24,6 +24,38 @@
   font-size: 1.5rem; /* Tailwind's text-xl */
 }
 
+.article-heading {
+  scroll-margin-top: 2rem;
+}
+
+.article-heading a.heading-anchor {
+  margin-left: 0.5rem;
+  color: #9ca3af;
+  text-decoration: none;
+  font-weight: normal;
+  opacity: 0;
+}
+
+.article-heading:hover a.heading-anchor,
+.article-heading a.heading-anchor:focus-visible {
+  opacity: 1;
+}
+
+.article-heading a.heading-anchor:hover {
+  color: #d1d5db;
+}
+
+.article-heading a.heading-anchor:focus-visible {
+  outline: 2px solid #a78bfa;
+  outline-offset: 4px;
+}
+
+@media (hover: none) {
+  .article-heading a.heading-anchor {
+    opacity: 0.6;
+  }
+}
+
 .markdown-container h3 {
   font-size: 1.25rem; /* Tailwind's text-lg */
 }
@@ -43,6 +75,14 @@
 
 .markdown-container a:hover {
   color: #a78bfa; /* Lighter violet on hover (similar to Tailwind's hover:text-violet-300) */
+}
+
+.markdown-container a[href^="#"] {
+  color: #9ca3af;
+}
+
+.markdown-container a[href^="#"]:hover {
+  color: #d1d5db;
 }
 
 /* Lists */

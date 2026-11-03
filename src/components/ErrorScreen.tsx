@@ -15,7 +15,7 @@ export default function ErrorScreen({
         {code ? <p className="mb-3 text-sm text-gray-400">{code}</p> : null}
         <h1 className="text-2xl font-semibold">{title}</h1>
         <p className="mt-3 leading-relaxed text-gray-400">{description}</p>
-        <div className="mt-6 flex flex-wrap justify-center gap-4">
+        <div className="mt-6 flex flex-wrap items-center justify-center gap-4">
           {onRetry ? (
             <button
               type="button"
@@ -25,7 +25,7 @@ export default function ErrorScreen({
               Try again
             </button>
           ) : null}
-          <a href="/" className="rounded-md border border-gray-700 px-4 py-2 hover:border-gray-400">
+          <a href="/" className="text-violet-400 italic underline underline-offset-4 hover:text-violet-300">
             Back home
           </a>
         </div>

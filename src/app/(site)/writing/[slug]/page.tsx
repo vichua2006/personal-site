@@ -4,9 +4,11 @@ import { notFound } from "next/navigation";
 import ReactMarkdown, { type Components } from "react-markdown";
 import rehypeRaw from "rehype-raw";
 import remarkDirective from "remark-directive";
+import ArticleHeading from "src/components/ArticleHeading";
 import { SpotlightBlock, SpotlightInline } from "src/components/SpotlightText";
 import { getAllPosts, getPost } from "src/lib/posts";
 import { remarkSpotlight } from "src/lib/remarkSpotlight";
+import { headingId, rehypeHeadingIds } from "src/lib/rehypeHeadingIds";
 
 type PageProps = { params: Promise<{ slug: string }> };
 
@@ -26,6 +28,12 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 }
 
 const markdownComponents = {
+  h1: ({ children, id }) => <ArticleHeading as="h1" id={id}>{children}</ArticleHeading>,
+  h2: ({ children, id }) => <ArticleHeading id={id}>{children}</ArticleHeading>,
+  h3: ({ children, id }) => <ArticleHeading as="h3" id={id}>{children}</ArticleHeading>,
+  h4: ({ children, id }) => <ArticleHeading as="h4" id={id}>{children}</ArticleHeading>,
+  h5: ({ children, id }) => <ArticleHeading as="h5" id={id}>{children}</ArticleHeading>,
+  h6: ({ children, id }) => <ArticleHeading as="h6" id={id}>{children}</ArticleHeading>,
   "spotlight-inline": ({ children }: { children?: React.ReactNode }) => (
     <SpotlightInline>{children}</SpotlightInline>
   ),
@@ -44,18 +52,18 @@ export default async function PostPage({ params }: PageProps) {
   return (
     <>
       <div className="markdown-container">
-        <h2>{post.title}</h2>
+        <ArticleHeading id={`article-${headingId(post.title)}`}>{post.title}</ArticleHeading>
         <p className="text-md text-gray-400 italic">{post.date}</p>
         <ReactMarkdown
           remarkPlugins={[remarkDirective, remarkSpotlight]}
-          rehypePlugins={[rehypeRaw]}
+          rehypePlugins={[rehypeRaw, rehypeHeadingIds]}
           components={markdownComponents}
         >
           {post.content}
         </ReactMarkdown>
       </div>
       {post.content.length > 1000 ? (
-        <Link href="/writing" className="text-white flex items-center my-32">
+        <Link href="/writing" className="text-gray-400 hover:text-gray-200 flex items-center my-32">
           ← Back to all posts
         </Link>
       ) : null}

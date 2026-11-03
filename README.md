@@ -50,6 +50,11 @@ registration to `www.victor-huang.ca`.
 
 Posts live in `src/content/posts`. Each `.md` file needs `title`, `description`, `date` (`MM-DD-YYYY`), and a `slug` matching its filename in frontmatter. The writing index discovers posts automatically and orders them newest first.
 
+Article headings have fragment links: hover a heading or focus its `#` link to
+jump to that section and share its URL. Markdown headings receive IDs from their
+text, with numeric suffixes for repeats. Fixed artifact pages use `ArticleHeading`
+with explicit IDs so their links stay stable when titles change.
+
 The light can reveal text inside a paragraph or an entire block:
 
 ```md

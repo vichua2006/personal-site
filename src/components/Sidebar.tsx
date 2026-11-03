@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { FaGithub, FaLinkedin, FaEnvelope, FaFileAlt, FaBars, FaTimes, FaLink } from "react-icons/fa";
+import { FaGithub, FaLinkedin, FaEnvelope, FaFileAlt, FaBars, FaTimes, FaFlickr } from "react-icons/fa";
 import { useState } from "react";
 
 const links = {
@@ -13,7 +13,6 @@ const links = {
 };
 
 const externals = {
-  Arena: { url: "https://www.are.na/victor-huang/channels", icon: <FaLink /> },
   Github: { url: "https://github.com/vichua2006/", icon: <FaGithub /> },
   LinkedIn: {
     url: "https://linkedin.com/in/victor-qibin-huang",
@@ -21,6 +20,7 @@ const externals = {
   },
   Email: { url: "mailto:victor.huang1@uwaterloo.ca", icon: <FaEnvelope /> },
   Resume: { url: "/resume.pdf", icon: <FaFileAlt /> },
+  Flickr: { url: "https://www.flickr.com/people/205094068@N04/", icon: <FaFlickr /> },
 };
 
 const Sidebar = () => {

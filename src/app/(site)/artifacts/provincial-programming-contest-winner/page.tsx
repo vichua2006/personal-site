@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import LinkPreview from "src/components/LinkPreview";
+import ArticleHeading from "src/components/ArticleHeading";
 
 export const metadata: Metadata = {
   title: "Three-Time Winner of Provincial Programming Contest.",
@@ -11,7 +12,7 @@ export default function ProvincialProgrammingContestPage() {
   return (
     <>
       <div className="markdown-container">
-        <h2>Three-Time Consecutive Winner of Provincial Programming Contest.</h2>
+        <ArticleHeading id="provincial-programming-contest-winner">Three-Time Consecutive Winner of Provincial Programming Contest.</ArticleHeading>
         <p>Coverage of my provincial programming contest wins in 2021, 2022, and 2024.</p>
         <p>
           Teamed up with <a href="https://simianwang.me">Simian Wang</a> (2022)
@@ -26,7 +27,7 @@ export default function ProvincialProgrammingContestPage() {
         />
         <div className="rounded-xl border border-gray-700 p-4">
           <div className="text-sm text-gray-400">2023</div>
-          <h3 className="mt-2 font-medium text-white">No contest held</h3>
+          <ArticleHeading as="h3" id="no-contest-in-2023" className="mt-2 font-medium text-white">No contest held</ArticleHeading>
           <p className="mt-2 text-sm leading-relaxed text-gray-300">
             There was no provincial programming contest in 2023.
           </p>
@@ -44,7 +45,7 @@ export default function ProvincialProgrammingContestPage() {
           showImage={false}
         />
       </div>
-      <Link href="/artifacts" className="text-white flex items-center my-8">
+      <Link href="/artifacts" className="text-gray-400 hover:text-gray-200 flex items-center my-8">
         ← Back to all artifacts
       </Link>
     </>
