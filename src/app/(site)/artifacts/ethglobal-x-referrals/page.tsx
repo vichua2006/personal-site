@@ -126,7 +126,7 @@ export default function EthGlobalXReferralsPage() {
             <a href="/artifacts/ethglobal-x-referrals/demo.mp4">Open the demo</a>.
           </video>
           <figcaption className="mt-2 text-sm text-gray-400">
-            The full Tokyo demo follows the referral link from sharing on X to
+            The full Tokyo demo <b>on prod</b> follows the referral link from sharing on X to
             verification and a stake that drops from 0.02 ETH to 0.01 ETH.
           </figcaption>
         </figure>
@@ -251,7 +251,7 @@ export default function EthGlobalXReferralsPage() {
         <p>
           <strong>End result:</strong> The hacker gets their Ethereum
           discount. In the demo, the checkout drops from 0.02 ETH to 0.01 ETH.
-          and people are still using it, search{" "}
+          Pretty proud of this one since lots of people are using it, search{" "}
           <a href="https://x.com/search?q=I%27m%20going%20to%20ETHGlobal&amp;src=typed_query&amp;f=top">
             “I’m going to ETHGlobal” on X
           </a>
