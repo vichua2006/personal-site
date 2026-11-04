@@ -134,7 +134,8 @@ export default function EthGlobalXReferralsPage() {
         <ArticleHeading id="verify-the-post">Verify the post</ArticleHeading>
         <p>
           Participants share their referral link on X and paste the post URL
-          back into the event page.
+          back into the event page. Verification starts with a Mastra agent
+          tool call.
         </p>
         <p>
           We accessed Grok 4.3 through OpenRouter. Grok’s built-in X Search let
