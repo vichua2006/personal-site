@@ -1,0 +1,224 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 996">
+  <title>Goose Games database schema</title>
+  <desc>Each event has attendees, activities, quests, and store items. Both logs reference the player's unique event_attendee_id. The application matches scanned quests by event and activity category and stores the activity ID in the quest log without a foreign key. An ellipsis indicates omitted columns.</desc>
+  <style>
+    .table { fill: #111a2a; stroke: #475569; }
+    .header { fill: #1e293b; }
+    .highlight { fill: #272043; }
+    .name { fill: #f1f5f9; font: 600 14px ui-monospace, monospace; }
+    .field { fill: #e2e8f0; font: 12px ui-monospace, monospace; }
+    .type, .omitted { fill: #aab8cb; font: 11px ui-monospace, monospace; }
+    .type { text-anchor: end; }
+    .key { fill: #c4b5fd; font: 700 10px system-ui, sans-serif; }
+    .constraint { fill: #c4b5fd; font: 11px ui-monospace, monospace; }
+    .link { fill: none; stroke: #a78bfa; stroke-width: 1.5; }
+    .cardinality { fill: #ddd6fe; font: 11px ui-monospace, monospace; }
+  </style>
+  <rect width="660" height="996" rx="12" fill="#0b1220"/>
+
+  <g class="link">
+    <path d="M284 60h52 M150 154v76"/>
+    <path d="M284 105h15v106h357v584h-12 M490 211v19"/>
+  </g>
+  <g class="cardinality">
+    <text x="292" y="54">1</text>
+    <text x="321" y="54">N</text>
+    <text x="159" y="169">1</text>
+    <text x="159" y="223">N</text>
+    <text x="291" y="99">1</text>
+    <text x="499" y="223">N</text>
+    <text x="646" y="788">N</text>
+  </g>
+  <g class="link" transform="translate(0 236)">
+    <path d="M150 132v106"/>
+    <path d="M284 294h52"/>
+    <path d="M150 420v104"/>
+    <path d="M490 198v40 M490 486v38" stroke-dasharray="4 4"/>
+    <path d="M284 576h52"/>
+  </g>
+  <g class="cardinality" transform="translate(0 236)">
+    <text x="159" y="147">1</text>
+    <text x="159" y="231">0..1</text>
+    <text x="292" y="288">1</text>
+    <text x="321" y="288">N</text>
+    <text x="159" y="435">1</text>
+    <text x="159" y="517">N</text>
+    <text x="499" y="212">0..1</text>
+    <text x="499" y="231">N</text>
+    <text x="499" y="500">N</text>
+    <text x="499" y="517">0..1</text>
+    <text x="292" y="570">N</text>
+    <text x="321" y="570">1</text>
+  </g>
+
+  <g transform="translate(16 16)">
+    <rect class="table" width="268" height="138" rx="6"/>
+    <path class="header" d="M6 1h256q5 0 5 5v22H1V6q0-5 5-5z"/>
+    <text class="name" x="12" y="19">events</text>
+    <text class="key" x="12" y="43">PK</text>
+    <text class="key" x="12" y="87">UNIQUE</text>
+    <text class="field" x="62" y="44">id</text>
+    <text class="field" x="62" y="66">name</text>
+    <text class="field" x="62" y="88">slug</text>
+    <text class="type" x="256" y="44">Int</text>
+    <text class="type" x="256" y="66">String</text>
+    <text class="type" x="256" y="88">String</text>
+    <text class="omitted" x="62" y="110">...</text>
+    <text class="constraint" x="12" y="132">INDEX (slug)</text>
+  </g>
+
+  <g transform="translate(336 16)">
+    <rect class="table" width="308" height="182" rx="6"/>
+    <path class="header" d="M6 1h296q5 0 5 5v22H1V6q0-5 5-5z"/>
+    <path class="highlight" d="M1 28h306v44H1z M1 94h306v22H1z"/>
+    <text class="name" x="12" y="19">event_activities</text>
+    <text class="key" x="12" y="43">PK</text>
+    <text class="key" x="12" y="65">FK</text>
+    <text class="field" x="42" y="44">id</text>
+    <text class="field" x="42" y="66">event_id</text>
+    <text class="field" x="42" y="88">slug</text>
+    <text class="field" x="42" y="110">category</text>
+    <text class="type" x="296" y="44">Int</text>
+    <text class="type" x="296" y="66">Int</text>
+    <text class="type" x="296" y="88">String?</text>
+    <text class="type" x="296" y="110">String?</text>
+    <text class="omitted" x="42" y="132">...</text>
+    <text class="constraint" x="12" y="154">UNIQUE (slug, event_id)</text>
+    <text class="constraint" x="12" y="176">INDEX (slug)</text>
+  </g>
+
+  <g transform="translate(16 230)">
+    <rect class="table" width="268" height="138" rx="6"/>
+    <path class="header" d="M6 1h256q5 0 5 5v22H1V6q0-5 5-5z"/>
+    <text class="name" x="12" y="19">event_attendees</text>
+    <text class="key" x="12" y="43">PK</text>
+    <text class="field" x="62" y="44">id</text>
+    <text class="type" x="256" y="44">Int</text>
+    <text class="key" x="12" y="65">FK</text>
+    <text class="field" x="62" y="66">event_id</text>
+    <text class="type" x="256" y="66">Int</text>
+    <text class="field" x="62" y="88">badge_code</text>
+    <text class="type" x="256" y="88">String?</text>
+    <text class="omitted" x="62" y="110">...</text>
+    <text class="constraint" x="12" y="132">UNIQUE (badge_code, event_id)</text>
+  </g>
+
+  <g transform="translate(336 230)">
+    <rect class="table" width="308" height="204" rx="6"/>
+    <path class="header" d="M6 1h296q5 0 5 5v22H1V6q0-5 5-5z"/>
+    <path class="highlight" d="M1 94h306v66H1z"/>
+    <text class="name" x="12" y="19">goose_game_store_items</text>
+    <text class="key" x="12" y="43">PK</text>
+    <text class="key" x="12" y="65">FK</text>
+    <text class="field" x="42" y="44">id</text>
+    <text class="field" x="42" y="66">event_id</text>
+    <text class="field" x="42" y="88">name</text>
+    <text class="field" x="42" y="110">point_cost</text>
+    <text class="field" x="42" y="132">quantity_available</text>
+    <text class="field" x="42" y="154">user_redemption_limit</text>
+    <text class="omitted" x="42" y="176">...</text>
+    <text class="constraint" x="12" y="198">UNIQUE (event_id, name)</text>
+    <text class="type" x="296" y="44">Int</text>
+    <text class="type" x="296" y="66">Int</text>
+    <text class="type" x="296" y="88">String</text>
+    <text class="type" x="296" y="110">Int</text>
+    <text class="type" x="296" y="132">Int</text>
+    <text class="type" x="296" y="154">Int</text>
+  </g>
+
+  <g transform="translate(16 474)">
+    <rect class="table" width="268" height="182" rx="6"/>
+    <path class="header" d="M6 1h256q5 0 5 5v22H1V6q0-5 5-5z"/>
+    <path class="highlight" d="M1 50h266v44H1z"/>
+    <text class="name" x="12" y="19">goose_game_players</text>
+    <text class="key" x="12" y="43">PK</text>
+    <text class="key" x="12" y="65">FK</text>
+    <text class="field" x="62" y="44">id</text>
+    <text class="field" x="62" y="66">event_attendee_id</text>
+    <text class="field" x="62" y="88">current_points</text>
+    <text class="field" x="62" y="110">total_points</text>
+    <text class="type" x="256" y="44">Int</text>
+    <text class="type" x="256" y="66">Int</text>
+    <text class="type" x="256" y="88">Int</text>
+    <text class="type" x="256" y="110">Int</text>
+    <text class="omitted" x="62" y="132">...</text>
+    <text class="constraint" x="12" y="154">UNIQUE (event_attendee_id)</text>
+    <text class="constraint" x="12" y="176">INDEX (event_attendee_id)</text>
+  </g>
+
+  <g transform="translate(336 474)">
+    <rect class="table" width="308" height="248" rx="6"/>
+    <path class="header" d="M6 1h296q5 0 5 5v22H1V6q0-5 5-5z"/>
+    <path class="highlight" d="M1 50h306v110H1z"/>
+    <text class="name" x="12" y="19">goose_game_transactions</text>
+    <text class="key" x="12" y="43">PK</text>
+    <text class="key" x="12" y="65">FK</text>
+    <text class="key" x="12" y="131">FK</text>
+    <text class="key" x="12" y="153">FK</text>
+    <text class="field" x="42" y="44">id</text>
+    <text class="field" x="42" y="66">event_attendee_id</text>
+    <text class="field" x="42" y="88">points_change</text>
+    <text class="field" x="42" y="110">type</text>
+    <text class="field" x="42" y="132">quest_id</text>
+    <text class="field" x="42" y="154">item_id</text>
+    <text class="field" x="42" y="176">created_at</text>
+    <text class="type" x="296" y="44">Int</text>
+    <text class="type" x="296" y="66">Int</text>
+    <text class="type" x="296" y="88">Int</text>
+    <text class="type" x="296" y="110">Enum</text>
+    <text class="type" x="296" y="132">Int?</text>
+    <text class="type" x="296" y="154">Int?</text>
+    <text class="type" x="296" y="176">DateTime</text>
+    <text class="omitted" x="42" y="198">...</text>
+    <text class="constraint" x="12" y="220">INDEX (event_attendee_id)</text>
+    <text class="constraint" x="12" y="242">INDEX (event_attendee_id, item_id, type)</text>
+  </g>
+
+  <g transform="translate(16 760)">
+    <rect class="table" width="268" height="182" rx="6"/>
+    <path class="header" d="M6 1h256q5 0 5 5v22H1V6q0-5 5-5z"/>
+    <path class="highlight" d="M1 50h266v110H1z"/>
+    <text class="name" x="12" y="19">goose_game_quest_log</text>
+    <text class="key" x="12" y="43">PK</text>
+    <text class="key" x="12" y="65">FK</text>
+    <text class="key" x="12" y="87">FK</text>
+    <text class="field" x="42" y="44">id</text>
+    <text class="field" x="42" y="66">event_attendee_id</text>
+    <text class="field" x="42" y="88">quest_id</text>
+    <text class="field" x="42" y="110"><title>Application reference to event_activities.id (no foreign key)</title>event_activity_id</text>
+    <text class="field" x="42" y="132">scanned_event_attendee_id</text>
+    <text class="field" x="42" y="154">created_at</text>
+    <text class="type" x="256" y="44">Int</text>
+    <text class="type" x="256" y="66">Int</text>
+    <text class="type" x="256" y="88">Int</text>
+    <text class="type" x="256" y="110">Int?</text>
+    <text class="type" x="256" y="132">Int?</text>
+    <text class="type" x="256" y="154">DateTime</text>
+    <text class="constraint" x="12" y="176">INDEX (event_attendee_id)</text>
+  </g>
+
+  <g transform="translate(336 760)">
+    <rect class="table" width="308" height="220" rx="6"/>
+    <path class="header" d="M6 1h296q5 0 5 5v22H1V6q0-5 5-5z"/>
+    <path class="highlight" d="M1 94h306v66H1z"/>
+    <text class="name" x="12" y="19">goose_game_quests</text>
+    <text class="key" x="12" y="43">PK</text>
+    <text class="key" x="12" y="65">FK</text>
+    <text class="field" x="42" y="44">id</text>
+    <text class="field" x="42" y="66">event_id</text>
+    <text class="field" x="42" y="88">type</text>
+    <text class="field" x="30" y="110">quest_event_activity_category</text>
+    <text class="field" x="42" y="132">completion_limit</text>
+    <text class="field" x="42" y="154">points_rewarded</text>
+    <text class="type" x="296" y="44">Int</text>
+    <text class="type" x="296" y="66">Int</text>
+    <text class="type" x="296" y="88">Enum</text>
+    <text class="type" x="296" y="110">String?</text>
+    <text class="type" x="296" y="132">Int</text>
+    <text class="type" x="296" y="154">Int</text>
+    <text class="omitted" x="42" y="176">...</text>
+    <text class="constraint" x="12" y="198">UNIQUE (event_id,</text>
+    <text class="constraint" x="65" y="212">quest_event_activity_category)</text>
+  </g>
+
+</svg>
