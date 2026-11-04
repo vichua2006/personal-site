@@ -1,0 +1,26 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
+  gap: 0.625rem;
+  margin-top: 1rem;
+}
+
+.grid :global(.react-tweet-theme) {
+  --tweet-container-margin: 0;
+  --tweet-header-font-size: 0.8125rem;
+  --tweet-header-line-height: 1.1rem;
+  --tweet-body-font-size: 0.875rem;
+  --tweet-body-line-height: 1.25rem;
+  --tweet-info-font-size: 0.75rem;
+  --tweet-info-line-height: 1rem;
+  min-width: 0;
+  max-width: none;
+}
+
+.grid :global(.react-tweet-theme) p {
+  white-space: normal;
+}
+
+.date {
+  margin-top: 0.5rem;
+}

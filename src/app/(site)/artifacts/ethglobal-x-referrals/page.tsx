@@ -1,8 +1,56 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import {
+  enrichTweet,
+  TweetBody,
+  TweetContainer,
+  TweetHeader,
+  TweetInfoCreatedAt,
+} from "react-tweet";
+import { getTweet } from "react-tweet/api";
 import ArticleHeading from "src/components/ArticleHeading";
+import styles from "./tweet-previews.module.css";
 
-const title = "ETHGlobal: From X Post to Stake Discount";
+const title = "ETHGlobal X/Twitter referral system";
+
+const referralPosts = [
+  {
+    handle: "_DefaultAntxn",
+    id: "2114774067492565315",
+    name: "Anton Raj",
+    excerpt: "I'm going to ETHGlobal Mumbai @ETHGlobal! With @MeghVyas3132",
+  },
+  {
+    handle: "masafumiaida",
+    id: "2095779307486654684",
+    name: "Masafumi Aida",
+    excerpt: "I'm going to ETHGlobal Tokyo 2026 @ETHGlobal!",
+  },
+  {
+    handle: "0xpokotaro",
+    id: "2101302152828477941",
+    name: "増田健太郎",
+    excerpt: "I'm going to ETHGlobal Tokyo 2026 @ETHGlobal!",
+  },
+  {
+    handle: "RuntimeTerror0",
+    id: "2116553890942656930",
+    name: "Runtime Terror",
+    excerpt: "I'm going to ETHGlobal Mumbai @ETHGlobal!",
+  },
+  {
+    handle: "AdityaPati74270",
+    id: "2112437398122762700",
+    name: "Aditya Patil",
+    excerpt: "I'm going to ETHGlobal Mumbai @ETHGlobal!",
+  },
+  {
+    handle: "thisisouvik",
+    id: "2107739159670714749",
+    name: "Souvik Mandal",
+    excerpt: "I'm going to ETHGlobal Mumbai @ETHGlobal!",
+  },
+];
 
 export const metadata: Metadata = {
   title,
@@ -10,6 +58,37 @@ export const metadata: Metadata = {
     "How I built the flow that verifies an ETHGlobal referral post and applies a discount to an event checkout.",
   robots: { index: false, follow: false },
 };
+
+async function ReferralPost({ id, handle, name, excerpt }: (typeof referralPosts)[number]) {
+  const post = await getTweet(id, {
+    cache: "force-cache",
+    signal: AbortSignal.timeout(5000),
+  }).catch(() => undefined);
+
+  if (!post) {
+    return (
+      <a
+        href={`https://x.com/${handle}/status/${id}`}
+        className="block rounded-xl border border-gray-700 bg-gray-900 p-3 text-sm leading-snug hover:border-violet-400"
+      >
+        <span className="block font-medium text-white">{name}</span>
+        <span className="block text-xs text-gray-400">@{handle} on X ↗</span>
+        <span className="mt-2 block text-gray-300">{excerpt}</span>
+      </a>
+    );
+  }
+
+  const tweet = enrichTweet(post);
+  return (
+    <TweetContainer>
+      <TweetHeader tweet={tweet} />
+      <TweetBody tweet={tweet} />
+      <div className={styles.date}>
+        <TweetInfoCreatedAt tweet={tweet} />
+      </div>
+    </TweetContainer>
+  );
+}
 
 export default function EthGlobalXReferralsPage() {
   return (
@@ -19,15 +98,16 @@ export default function EthGlobalXReferralsPage() {
           {title}
         </ArticleHeading>
         <p>
-          From ETHGlobal Tokyo onwards, accepted hackers could share a personal
-          referral link on X and get half off their event stake once we verified the
-          post. Accepted hackers who came through the link could get half off
-          too. I worked on the flow from reading that post to changing the
-          amount the hacker saw at checkout.
+          From the ETHGlobal Tokyo hackathon onwards, accepted participants
+          could share a personal referral link on X and get half off their
+          stake once we verified the post. The stake is a deposit paid in
+          Ethereum (ETH) to confirm a spot at the hackathon. Other accepted
+          participants who used the link could get half off too. I worked on
+          the flow from reading the post to generating the discount and applying it at checkout.
         </p>
         <p>
-          On the surface it doesn’t appear that much has happened but a lot
-          occurred in the background to get this through.
+          I found this feature to be particularly interesting to work on, and wanted to write about it.
+          not much seem to happen on the surface, but lots occurred in the background to get this through.
         </p>
 
         <figure className="my-8">
@@ -53,23 +133,20 @@ export default function EthGlobalXReferralsPage() {
 
         <ArticleHeading id="verify-the-post">Verify the post</ArticleHeading>
         <p>
-          The hacker needs an X account connected to ETHGlobal. They share their
-          referral link from that account and paste the post URL back into the
-          event page.
+          Participants share their referral link on X and paste the post URL
+          back into the event page.
         </p>
         <p>
-          We used Grok 4.3 through OpenRouter. Grok’s built-in X Search can look
-          up profiles and fetch posts. I built and tested tools to resolve X
+          We accessed Grok 4.3 through OpenRouter. Grok’s built-in X Search let
+          us look up profiles and fetch posts without paying for direct access
+          to the official Twitter API. I built and tested tools to resolve X
           profiles and retrieve a post’s text and author from its exact URL.
-          For the referral, we checked that the author matched the connected
-          account and that the post contained the hacker’s own referral link or
-          code.
         </p>
         <ArticleHeading id="apply-the-reward">Apply the reward</ArticleHeading>
         <p>
           Once we verified the post, we still had to get the reward onto the
           right checkout. Applying it meant plugging the referral flow into
-          four existing ETHGlobal data models. The payment fields are internal,
+          five existing ETHGlobal data models. The payment fields are internal,
           so I’ll stick to what each table does and how they fit together.
         </p>
 
@@ -79,17 +156,30 @@ export default function EthGlobalXReferralsPage() {
               <code>campaign</code>
             </dt>
             <dd className="mt-1 text-sm text-gray-300">
-              Defines the offer for a specific event. In this case, the offer
-              was half off the event stake.
+              Defines the reward for an event, including whether it’s a
+              percentage or a flat amount and how much to take off. Our
+              referral campaign offered 50% off.
             </dd>
           </div>
           <div className="rounded-lg border border-gray-800 bg-gray-900/60 p-4">
             <dt className="font-semibold text-white">
+              <code>prices</code>
+            </dt>
+            <dd className="mt-1 text-sm text-gray-300">
+              Lists what someone can pay for at an event. A ticket to Pragma,
+              ETHGlobal’s one-day conference, has its own price. So does the
+              deposit for a hackathon.
+            </dd>
+          </div>
+          <div className="rounded-lg border border-gray-800 bg-gray-900/60 p-4 sm:col-span-2">
+            <dt className="font-semibold text-white">
               <code>campaign_incentive</code>
             </dt>
             <dd className="mt-1 text-sm text-gray-300">
-              Connects the campaign to a hacker and determines when they earn
-              the reward. Here, verifying their referral post unlocked it.
+              Joins a campaign to a price and defines how the offer applies
+              to that price. A price is eligible only if that pair has an
+              incentive record. We linked the referral campaign to the hacker
+              stake price.
             </dd>
           </div>
           <div className="rounded-lg border border-gray-800 bg-gray-900/60 p-4">
@@ -97,7 +187,9 @@ export default function EthGlobalXReferralsPage() {
               <code>discount</code>
             </dt>
             <dd className="mt-1 text-sm text-gray-300">
-              Records the reduction and ties it to a specific payment.
+              Once a participant qualifies, we generate a discount from the
+              matching campaign incentive row and link it to that participant
+              and their payment.
             </dd>
           </div>
           <div className="rounded-lg border border-gray-800 bg-gray-900/60 p-4">
@@ -112,24 +204,70 @@ export default function EthGlobalXReferralsPage() {
         </dl>
 
         <p>
-          The tricky part was that the same link could lead to a discount in
-          two ways. Verifying the post gave the person who shared it a one-time
-          50% discount. An accepted hacker coming in through the link could
-          also get 50% off. We blocked the campaign owner from claiming their
-          own link through that second path. After verification, the page kept
-          the referral active and disabled the verify button.
+          We added a marker to the tables’ flexible JSON <code>meta</code>{" "}
+          field. We included that marker in the external metadata so eligible
+          participants could apply the discount themselves.
         </p>
-        <p>
-          We also had to handle hackers who already had a discount. If their
-          stake was already discounted by 50% or more, we kept the existing
-          discount. The referral campaign was scoped to the event’s active
-          hacker stake price, so it only applied to that checkout.
+        <p id="edge-cases">
+          This is where the edge cases got interesting.
+          Here they are, and my solutions for each one:
         </p>
+        <ul>
+          <li>
+            <strong>Missing or mismatched X account.</strong> We required a
+            connected account and checked that it matched the post’s author.
+          </li>
+          <li>
+            <strong>Referral link submitted on its own.</strong> We required
+            an X post containing the participant’s own referral link or code.
+          </li>
+          <li>
+            <strong>Failed verification.</strong> The participant could retry
+            with a new post.
+          </li>
+          <li>
+            <strong>Switching X accounts.</strong> We kept any discount already
+            earned. To verify posts from the old account, the participant had
+            to reconnect it.
+          </li>
+          <li>
+            <strong>Repeat submissions.</strong> We recorded the X post ID in
+            the discount’s metadata. Prisma supports JSON field lookup in
+            PostgreSQL, so we used a <code>where</code> filter with a JSON{" "}
+            <code>path</code> to look for the ID. A match blocked a second
+            redemption. With no match, the post could still qualify.
+          </li>
+          <li>
+            <strong>Self-referrals.</strong> The poster couldn’t use their own
+            link to claim a second discount. Other accepted participants could
+            still use it.
+          </li>
+          <li>
+            <strong>Existing discounts.</strong> If someone already had 50%
+            off or more, we kept their existing discount.
+          </li>
+        </ul>
         <p>
-          <strong>Here’s the end result.</strong> The hacker got their discount.
-          The checkout showed 0.01 ETH instead of 0.02 ETH.
+          <strong>End result:</strong> The hacker gets their Ethereum
+          discount. In the demo, the checkout drops from 0.02 ETH to 0.01 ETH.
+          and people are still using it, search{" "}
+          <a href="https://x.com/search?q=I%27m%20going%20to%20ETHGlobal&amp;src=typed_query&amp;f=top">
+            “I’m going to ETHGlobal” on X
+          </a>
+          , and see the posts.
         </p>
       </article>
+
+      <div
+        role="group"
+        aria-label="ETHGlobal referral posts on X"
+        className={styles.grid}
+        data-theme="dark"
+      >
+        {referralPosts.map((post) => (
+          <ReferralPost key={post.id} {...post} />
+        ))}
+      </div>
 
       <Link
         href="/artifacts"

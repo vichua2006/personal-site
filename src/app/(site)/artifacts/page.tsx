@@ -29,12 +29,12 @@ export default function ArtifactsPage() {
             <div className="min-w-0 flex-1">
               <Link href="/artifacts/ethglobal-x-referrals">
                 <h3 className="text-md text-white font-medium hover:underline underline-offset-4">
-                  ETHGlobal: From X Post to Stake Discount
+                  ETHGlobal X/Twitter referral system
                 </h3>
               </Link>
             </div>
             <div className="shrink-0 text-right text-sm text-gray-400 italic">
-              2026
+              Aug 2026
             </div>
           </div>
           <div className="flex justify-between items-center gap-4 py-2">
