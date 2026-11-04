@@ -27,6 +27,18 @@ export default function ArtifactsPage() {
         <div className="space-y-4">
           <div className="flex justify-between items-center gap-4 py-2">
             <div className="min-w-0 flex-1">
+              <Link href="/artifacts/ethglobal-x-referrals">
+                <h3 className="text-md text-white font-medium hover:underline underline-offset-4">
+                  ETHGlobal: From X Post to Stake Discount
+                </h3>
+              </Link>
+            </div>
+            <div className="shrink-0 text-right text-sm text-gray-400 italic">
+              2026
+            </div>
+          </div>
+          <div className="flex justify-between items-center gap-4 py-2">
+            <div className="min-w-0 flex-1">
               <Link href="/artifacts/goose-games">
                 <h3 className="text-md text-white font-medium hover:underline underline-offset-4">
                   Goose Games: From Badge Scan to Points
