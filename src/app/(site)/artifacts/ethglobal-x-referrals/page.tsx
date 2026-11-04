@@ -234,13 +234,13 @@ export default function EthGlobalXReferralsPage() {
           <li>
             <strong>Repeat submissions.</strong> We recorded the X post ID in
             the discount’s metadata. Prisma supports JSON field lookup in
-            PostgreSQL, so we used a <code>where</code> filter with a JSON{" "}
+            PostgreSQL, so we directly use a <code>where</code> clause with a JSON{" "}
             <code>path</code> to look for the ID. A match blocked a second
             redemption. With no match, the post could still qualify.
           </li>
           <li>
             <strong>Self-referrals.</strong> The poster couldn’t use their own
-            link to claim a second discount. Other accepted participants could
+            link to claim a second discount; similarly stored in the <code>campaign</code> that we generated for them. Other accepted participants could
             still use it.
           </li>
           <li>

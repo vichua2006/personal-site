@@ -4,7 +4,7 @@ import ArticleHeading from "src/components/ArticleHeading";
 import ImageCarousel from "src/components/ImageCarousel";
 
 export const metadata: Metadata = {
-  title: "National Math and Programming Competition Results",
+  title: "Canadian Math and Programming Competition Results",
   description:
     "My COMC provincial championship, Waterloo mathematics and programming distinctions, and Lloyd Auckland workshop experience, 2020–2024.",
 };
@@ -70,7 +70,7 @@ export default function NationalCompetitionResultsPage() {
   return (
     <article className="min-w-0 text-gray-300">
       <header className="markdown-container">
-        <ArticleHeading id="national-math-and-programming-competition-results">National Math and Programming Competition Results</ArticleHeading>
+        <ArticleHeading id="canadian-math-and-programming-competition-results">Canadian Math and Programming Competition Results</ArticleHeading>
         <p>
           A record of my years in competitive mathematics and programming:
           a provincial COMC championship, three years of CCC Senior results

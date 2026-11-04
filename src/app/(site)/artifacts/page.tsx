@@ -51,9 +51,9 @@ export default function ArtifactsPage() {
           </div>
           <div className="flex justify-between items-center gap-4 py-2">
             <div className="min-w-0 flex-1">
-              <Link href="/artifacts/national-math-and-programming-competition-results">
+              <Link href="/artifacts/canadian-math-and-programming-competition-results">
                 <h3 className="text-md text-white font-medium hover:underline underline-offset-4">
-                  National Math and Programming Competition Results
+                  Canadian Math and Programming Competition Results
                 </h3>
               </Link>
             </div>
