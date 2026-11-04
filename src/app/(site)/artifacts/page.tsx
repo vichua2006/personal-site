@@ -7,13 +7,13 @@ export default function ArtifactsPage() {
     <div className="text-white">
       <div className="font-bold mb-4">Artifacts</div>
       <p className="my-4">
-        This is not a project showcase, but rather self-documentation. I've
+        This is quite not a project showcase, but rather a cluster self-documentation to be polished. I've
         realized how important public visibility and proof of work are, and how
         much of my own achievements are undocumented. The best time to start is now.
       </p>
 
       <p className="my-8 italic">
-        These are unprocessed but honest documentations of what I've
+        These are unprocessed but honest records of what I've
         accomplished. Enjoy.
       </p>
 
