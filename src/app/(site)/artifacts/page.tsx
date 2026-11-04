@@ -34,7 +34,7 @@ export default function ArtifactsPage() {
               </Link>
             </div>
             <div className="shrink-0 text-right text-sm text-gray-400 italic">
-              March–September 2025
+              Mar - Sep 2025
             </div>
           </div>
           <div className="flex justify-between items-center gap-4 py-2">
